@@ -26,7 +26,7 @@ const Navbar = () => {
       variants={navbarVariants}
       initial="closed"
       animate="open"
-      className="flex justify-between items-center h-16 w-full bg-orange-50 px-5 lg:px-24 fixed z-20"
+      className="flex justify-between items-center h-16 w-full bg-orange-50 px-5 lg:px-24 fixed z-20 "
     >
       {/* Mobile Navbar */}
       <motion.div
@@ -84,7 +84,7 @@ const Navbar = () => {
                 transition: { duration: 0.2 },
               }}
             >
-              <Link href="/login">
+              <Link href="/register">
                 <motion.a
                   whileTap={{
                     scale: 0.9,

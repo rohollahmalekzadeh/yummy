@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const Banner = () => {
   return (
-    <div className="relative h-screen p-10 mt-14  ">
+    <div className="relative h-screen p-10">
       <Image
         src="/assets/pizza.webp"
         height="600px"
