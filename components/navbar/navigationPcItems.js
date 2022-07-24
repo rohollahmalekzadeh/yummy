@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 
+import { Button } from '../';
 import { motion } from 'framer-motion';
 
 const NavigationPcItems = ({ children }) => {
@@ -16,8 +17,10 @@ const NavigationPcItems = ({ children }) => {
       }}
     >
       <Link href={`/${children}`}>
-        <motion.a className="cursor-pointer  text-xl text-orange-400 hover:text-slate-100 hover:bg-orange-400  p-1 px-3 rounded-md  focus:text-slate-100 focus:bg-orange-400 transition duration-300 focus:outline-none hover:shadow-orange-300 hover:shadow-lg ">
-          {children}
+        <motion.a>
+          <Button buttonType="inverted" className="text-lg w-24">
+            {children}
+          </Button>
         </motion.a>
       </Link>
     </motion.li>

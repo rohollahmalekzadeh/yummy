@@ -1,10 +1,22 @@
-import React from 'react';
 import Link from 'next/link';
 
-const SuccessMessage = ({ SuccessMessage, children }) => {
+const SuccessMessage = ({
+  SuccessMessage,
+  href,
+  buttonMessage = '',
+  children = '',
+}) => {
   return (
-    <div className="mx-auto pt-10 py-10 h-[500px] flex flex-col justify-center  text-xl opacity-70">
+    <div className="flex flex-col justify-center items-center">
       <h1 className="text-3xl mb-3">{SuccessMessage}</h1>
+
+      {buttonMessage && (
+        <Link href={href}>
+          <a className="w-56 flex justify-center cursor-pointer text-2xl text-orange-500 hover:text-slate-100 hover:bg-orange-500  p-2 px-3 rounded-md  focus:text-slate-100 focus:bg-orange-400 transition duration-300 focus:outline-none hover:shadow-orange-400 hover:shadow-lg ">
+            {buttonMessage}
+          </a>
+        </Link>
+      )}
       {children}
     </div>
   );

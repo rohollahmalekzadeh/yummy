@@ -4,6 +4,7 @@ import {
   NavigationMobileContainer,
   NavigationMobileItems,
   NavigationPcItems,
+  Button,
 } from '../index';
 
 import Image from 'next/image';
@@ -67,7 +68,8 @@ const Navbar = () => {
               width="40"
               height="40"
               alt="Logo"
-              className="rounded-full cursor-pointer bg-black  "
+              className="rounded-full cursor-pointer bg-black"
+              quality={100}
             />
           </a>
         </Link>
@@ -94,12 +96,14 @@ const Navbar = () => {
                     scale: 1.1,
                     transition: { duration: 0.2 },
                   }}
-                  className="cursor-pointer   text-2xl text-orange-500 hover:text-slate-100 hover:bg-orange-500  p-1 px-3 rounded-md  focus:text-slate-100 focus:bg-orange-400 transition duration-300 focus:outline-none hover:shadow-orange-400 hover:shadow-lg "
                 >
-                  Register
+                  <Button buttonType="inverted" className="w-24 ">
+                    Register
+                  </Button>
                 </motion.a>
               </Link>
             </motion.li>
+
             <motion.li
               whileTap={{
                 scale: 0.9,
@@ -111,8 +115,8 @@ const Navbar = () => {
               }}
             >
               <Link href="/login">
-                <motion.a className="cursor-pointer   text-2xl bg-orange-500 text-slate-100  hover:text-orange-500 hover:bg-orange-100  p-1 px-3 rounded-md  focus:text-slate-100 focus:bg-orange-400 transition duration-300 focus:outline-none hover:shadow-orange-400 hover:shadow-lg ">
-                  Login
+                <motion.a>
+                  <Button className="w-24">Login</Button>
                 </motion.a>
               </Link>
             </motion.li>

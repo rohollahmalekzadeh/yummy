@@ -2,7 +2,7 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 import Link from 'next/link';
 
-import { Input } from '../components';
+import { Input, SuccessMessage, FormLayout, Form, Button } from '../components';
 
 const defaultFormFields = {
   email: '',
@@ -15,6 +15,7 @@ const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
 export default function Login() {
   const [formFields, setFormFields] = useState(defaultFormFields);
+  const [success, setSuccess] = useState(false);
   const [errorMsg, setErrMsg] = useState('');
 
   const handleChange = (event) => {
@@ -39,74 +40,74 @@ export default function Login() {
       <section className="hidden lg:inline  clip__image">
         <Image
           src="https://images.unsplash.com/photo-1642694358494-3d450f5ea978?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=732&q=80"
-          width={800}
-          height={850}
+          width={700}
+          height={800}
           alt="login image"
           className="-translate-y-8 clip__image"
         />
       </section>
 
-      <section className="w-8/12 md:w-6/12 xl:w-4/12 flex flex-col shadow-2xl rounded-xl backdrop-blur-3xl bg-white/20 xl:-translate-y-7">
-        <div className="mx-auto py-10 opacity-70 text-base  md:text-xl">
-          Register with your email and password
-        </div>
-        <form
-          className="h-max xl:h-max flex flex-col justify-start py-10"
-          onSubmit={handleSubmit}
-        >
-          <Input
-            label="email"
-            required
-            value={formFields.email}
-            name="email"
-            id="email"
-            type="text"
-            autoComplete="off"
-            onChange={handleChange}
+      <FormLayout>
+        {success ? (
+          <SuccessMessage
+            SuccessMessage="You are registered!"
+            href="/login"
+            buttonMessage="Go to login"
           />
+        ) : (
+          <>
+            <h1 className="mx-auto mt-20 py-10 text-lg xl:text-xl opacity-70">
+              Register with your email and password
+            </h1>
+            <Form handleSubmit={handleSubmit}>
+              <Input
+                label="email"
+                required
+                value={formFields.email}
+                name="email"
+                id="email"
+                type="text"
+                autoComplete="off"
+                onChange={handleChange}
+              />
 
-          <Input
-            label="password"
-            required
-            value={formFields.password}
-            name="password"
-            id="password"
-            type="password"
-            onChange={handleChange}
-          />
+              <Input
+                label="password"
+                required
+                value={formFields.password}
+                name="password"
+                id="password"
+                type="password"
+                onChange={handleChange}
+              />
 
-          <Input
-            label="confirm password"
-            required
-            value={formFields.confirmPassword}
-            name="confirmPassword"
-            id="confirm password"
-            type="password"
-            onChange={handleChange}
-          />
-          <div className="flex justify-around">
-            <button
-              type="submit"
-              className="cursor-pointer  w-72 text-2xl text-orange-500 hover:text-slate-100 hover:bg-orange-500  p-1 px-3 rounded-md  focus:text-slate-100 focus:bg-orange-400 transition duration-300 focus:outline-none hover:shadow-orange-400 hover:shadow-lg "
-            >
-              Register
-            </button>
-          </div>
-        </form>
+              <Input
+                label="confirm password"
+                required
+                value={formFields.confirmPassword}
+                name="confirmPassword"
+                id="confirm password"
+                type="password"
+                onChange={handleChange}
+              />
 
-        <div className="flex flex-col justify-center items-center text-slate-700 py-10 ">
-          <span className="py-2 text-xl">Already have an Account?</span>
+              <Button type="submit" buttonType="inverted" className="mx-auto">
+                Register
+              </Button>
+            </Form>
 
-          <Link href="/login">
-            <a
-              className="
-            cursor-pointer w-72  text-2xl flex justify-center bg-orange-500 text-slate-100  hover:text-orange-500 hover:bg-orange-100  p-1 px-3 rounded-md  focus:text-slate-100 focus:bg-orange-400 transition duration-300 focus:outline-none hover:shadow-orange-400 hover:shadow-lg"
-            >
-              Login
-            </a>
-          </Link>
-        </div>
-      </section>
+            <div className=" flex flex-col justify-center items-center text-slate-700 py-10 mb-14 ">
+              <span className="py-2 text-xl">Already have an Account?</span>
+
+              <Link href="/login">
+                <a>
+                  <Button>Login</Button>
+                </a>
+              </Link>
+            </div>
+          </>
+        )}
+      </FormLayout>
     </main>
   );
 }
