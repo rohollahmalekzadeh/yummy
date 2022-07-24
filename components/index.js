@@ -8,7 +8,7 @@ export { default as NavigationPcItems } from './navbar/navigationPcItems';
 export { default as Input } from './input/input';
 export { default as SuccessMessage } from './successMessage/successMessage';
 export { default as FormLayout } from './formLayout/formLayout';
-export { default as Form } from './Form/form';
+export { default as Form } from './form/form';
 export { default as Button } from './button/button';
 
 export { BUTTON_TYPES_CLASSES } from './button/button';

@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 
-const Form = ({ className, children, ...otherProps }) => {
+const Form = ({ className, children, onSubmit, ...otherProps }) => {
   return (
     <form
       className={classNames(className, `py-10 flex flex-col`)}

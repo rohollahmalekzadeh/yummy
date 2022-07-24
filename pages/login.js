@@ -23,9 +23,7 @@ export default function Login() {
     setFormFields({ ...formFields, [name]: value });
   };
 
-  useEffect(() => {
-    console.log(userRef.current);
-  }, []);
+  useEffect(() => {}, []);
 
   useEffect(() => {
     setErrorMsg('');
@@ -60,7 +58,7 @@ export default function Login() {
               Login with your email and password
             </h1>
 
-            <Form submitHandler={submitHandler}>
+            <Form onSubmit={submitHandler}>
               <Input
                 // ref={userRef}
                 label="email"

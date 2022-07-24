@@ -18,7 +18,10 @@ const NavigationPcItems = ({ children }) => {
     >
       <Link href={`/${children}`}>
         <motion.a>
-          <Button buttonType="inverted" className="text-lg w-24">
+          <Button
+            buttonType="inverted"
+            className="text-base xl:w-28 xl:text-lg lg:w-24 lg:text-base"
+          >
             {children}
           </Button>
         </motion.a>

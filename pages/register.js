@@ -10,7 +10,8 @@ const defaultFormFields = {
   confirmPassword: '',
 };
 
-const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
+const USER_REGEX =
+  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
 export default function Login() {
@@ -42,7 +43,7 @@ export default function Login() {
           src="https://images.unsplash.com/photo-1642694358494-3d450f5ea978?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=732&q=80"
           width={700}
           height={800}
-          alt="login image"
+          alt="register image"
           className="-translate-y-8 clip__image"
         />
       </section>
@@ -59,7 +60,7 @@ export default function Login() {
             <h1 className="mx-auto mt-20 py-10 text-lg xl:text-xl opacity-70">
               Register with your email and password
             </h1>
-            <Form handleSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit}>
               <Input
                 label="email"
                 required

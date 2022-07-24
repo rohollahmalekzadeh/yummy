@@ -17,9 +17,7 @@ import {
   navigationMobileVariants,
 } from './framer/navbar-framer-motion';
 
-const menuITems = ['Home', 'Menu', 'Blog', 'About us'];
-
-const Navbar = () => {
+const Navbar = ({ menuITems }) => {
   const [isOpen, toggleOpen] = useCycle(false, true);
 
   return (
