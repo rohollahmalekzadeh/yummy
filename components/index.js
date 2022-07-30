@@ -10,6 +10,7 @@ export { default as SuccessMessage } from './successMessage/successMessage';
 export { default as FormLayout } from './formLayout/formLayout';
 export { default as Form } from './form/form';
 export { default as Button } from './button/button';
+export { default as BannerLoader } from './banner/bannerLoader';
 
 export { BUTTON_TYPES_CLASSES } from './button/button';
 
