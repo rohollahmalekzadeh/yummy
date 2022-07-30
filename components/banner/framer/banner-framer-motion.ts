@@ -1,13 +1,14 @@
-import { Variants, Transition } from 'framer-motion';
+import {Variants} from 'framer-motion'
 
 export const container = {
   show: {
-    transition: { staggerChildren: 0.35 },
+    transition: {staggerChildren: 0.35},
   },
-};
+}
 
 export const item: Variants = {
-  hidden: { opacity: 0, y: 200 },
+  hidden: {opacity: 0, y: 200},
+
   show: {
     opacity: 1,
     y: 0,
@@ -16,6 +17,7 @@ export const item: Variants = {
       duration: 1.6,
     },
   },
+
   exit: {
     opacity: 0,
     y: -200,
@@ -24,7 +26,7 @@ export const item: Variants = {
       duration: 0.8,
     },
   },
-};
+}
 
 export const mainItem: Variants = {
   hidden: {
@@ -33,6 +35,7 @@ export const mainItem: Variants = {
     x: '-50%',
     scale: 0.5,
   },
+
   show: {
     opacity: 1,
     y: 0,
@@ -42,4 +45,4 @@ export const mainItem: Variants = {
       duration: 1.6,
     },
   },
-};
+}

@@ -1,12 +1,12 @@
-import Link from '../../node_modules/next/link';
-import { FC } from 'react';
+import Link from '../../node_modules/next/link'
+import {FC} from 'react'
 
 type SuccessMessageProps = {
-  SuccessMessage: string;
-  href: string;
-  buttonMessage?: string;
-  children?: JSX.Element | string;
-};
+  SuccessMessage: string
+  href: string
+  buttonMessage?: string
+  children?: JSX.Element | string
+}
 
 const SuccessMessage: FC<SuccessMessageProps> = ({
   SuccessMessage,
@@ -27,7 +27,7 @@ const SuccessMessage: FC<SuccessMessageProps> = ({
       )}
       {children}
     </div>
-  );
-};
+  )
+}
 
-export default SuccessMessage;
+export default SuccessMessage

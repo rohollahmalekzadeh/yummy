@@ -1,23 +1,23 @@
-import React, { FC } from 'react';
-import Link from 'next/link';
+import React, {FC} from 'react'
+import Link from 'next/link'
 
-import { Button } from '../../index';
-import { motion } from 'framer-motion';
+import {Button} from '../../index'
+import {motion} from 'framer-motion'
 
 type HeaderVertical = {
-  children: string;
-};
+  children: string
+}
 
-const HeaderHorizontal: FC<HeaderVertical> = ({ children }) => {
+const HeaderHorizontal: FC<HeaderVertical> = ({children}) => {
   return (
     <motion.li
       whileTap={{
         scale: 0.9,
-        transition: { duration: 0.2 },
+        transition: {duration: 0.2},
       }}
       whileHover={{
         scale: 1.1,
-        transition: { duration: 0.2 },
+        transition: {duration: 0.2},
       }}
     >
       <Link href={`/${children}`}>
@@ -31,7 +31,7 @@ const HeaderHorizontal: FC<HeaderVertical> = ({ children }) => {
         </motion.a>
       </Link>
     </motion.li>
-  );
-};
+  )
+}
 
-export default HeaderHorizontal;
+export default HeaderHorizontal

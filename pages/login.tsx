@@ -1,37 +1,38 @@
-import Image from 'next/image';
-import { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
+import {ChangeEvent, FormEvent} from 'react'
+import Image from 'next/image'
+import {useState, useEffect, useRef} from 'react'
+import Link from 'next/link'
 
-import { Input, SuccessMessage, FormLayout, Form, Button } from '../components';
+import {Input, SuccessMessage, FormLayout, Form, Button} from 'components'
 
 const defaultFormFields = {
   email: '',
   password: '',
-};
+}
 
 export default function Login() {
-  const [formFields, setFormFields] = useState(defaultFormFields);
+  const [formFields, setFormFields] = useState(defaultFormFields)
 
-  const [errorMsg, setErrorMsg] = useState('');
-  const [success, setSuccess] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('')
+  const [success, setSuccess] = useState(false)
 
-  const userRef = useRef();
+  const userRef = useRef()
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const {name, value} = event.target
 
-    setFormFields({ ...formFields, [name]: value });
-  };
+    setFormFields({...formFields, [name]: value})
+  }
 
-  useEffect(() => {}, []);
+  useEffect(() => {}, [])
 
   useEffect(() => {
-    setErrorMsg('');
-  }, [formFields.email, formFields.password]);
+    setErrorMsg('')
+  }, [formFields.email, formFields.password])
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-  };
+  const submitHandler = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+  }
 
   return (
     <main className="flex justify-around items-center lg:gap-10 px-4">
@@ -99,5 +100,5 @@ export default function Login() {
         )}
       </FormLayout>
     </main>
-  );
+  )
 }

@@ -1,26 +1,26 @@
-import React, { FC, ReactElement } from 'react';
-import Link from 'next/link';
+import React, {FC, ReactElement} from 'react'
+import Link from 'next/link'
 
-import { motion } from 'framer-motion';
-import { navigationMobileItemsVariants } from '../framer/navbar-framer-motion';
-import { Button } from '../../index';
+import {motion} from 'framer-motion'
+import {navigationMobileItemsVariants} from '../framer/navbar-framer-motion'
+import {Button} from 'components'
 
 type HeaderVertical = {
-  children: string;
-};
+  children: string
+}
 
-const HeaderVertical: FC<HeaderVertical> = ({ children }) => {
+const HeaderVertical: FC<HeaderVertical> = ({children}) => {
   return (
     <motion.li
       className="ml-7 mb-6 border-2 even:border-orange-300 odd:border-amber-300 rounded-md hover:border-transparent"
       variants={navigationMobileItemsVariants}
       whileTap={{
         scale: 0.9,
-        transition: { duration: 0.2 },
+        transition: {duration: 0.2},
       }}
       whileHover={{
         scale: 1.1,
-        transition: { duration: 0.2 },
+        transition: {duration: 0.2},
       }}
     >
       <Link href={`/${children}`}>
@@ -29,7 +29,7 @@ const HeaderVertical: FC<HeaderVertical> = ({ children }) => {
         </Button>
       </Link>
     </motion.li>
-  );
-};
+  )
+}
 
-export default HeaderVertical;
+export default HeaderVertical

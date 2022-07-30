@@ -1,46 +1,40 @@
-import Image from '../node_modules/next/image';
-import React, { useState } from 'react';
-import Link from '../node_modules/next/link';
+import Image from '../node_modules/next/image'
+import React, {ChangeEvent, FormEvent, useState} from 'react'
+import Link from '../node_modules/next/link'
 
-import {
-  Input,
-  SuccessMessage,
-  FormLayout,
-  Form,
-  Button,
-} from '../components/index';
+import {Input, SuccessMessage, FormLayout, Form, Button} from 'components'
 
 const defaultFormFields = {
   email: '',
   password: '',
   confirmPassword: '',
-};
+}
 
 const USER_REGEX =
-  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/
 
 export default function Register() {
-  const [formFields, setFormFields] = useState(defaultFormFields);
-  const [success, setSuccess] = useState(false);
-  const [errorMsg, setErrMsg] = useState('');
+  const [formFields, setFormFields] = useState(defaultFormFields)
+  const [success, setSuccess] = useState(false)
+  const [errorMsg, setErrMsg] = useState('')
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormFields({ ...formFields, [name]: value });
-  };
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const {name, value} = event.target
+    setFormFields({...formFields, [name]: value})
+  }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
 
     if (
       !USER_REGEX.test(formFields.email) ||
       !PWD_REGEX.test(formFields.password)
     ) {
-      setErrMsg('Invalid Entry');
-      return;
+      setErrMsg('Invalid Entry')
+      return
     }
-  };
+  }
 
   return (
     <main className="flex justify-around items-center lg:gap-10 px-4">
@@ -116,5 +110,5 @@ export default function Register() {
         )}
       </FormLayout>
     </main>
-  );
+  )
 }

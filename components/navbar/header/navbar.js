@@ -1,24 +1,24 @@
-import React from 'react';
+import React from 'react'
 import {
   MenuToggler,
   HeaderVertical,
   HeaderHorizontal,
   NavigationPcItems,
   Button,
-} from '../../index';
+} from '../../index'
 
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from 'next/image'
+import Link from 'next/link'
 
-import { motion, useCycle } from 'framer-motion';
+import {motion, useCycle} from 'framer-motion'
 import {
   sidebarVariants,
   navbarVariants,
   navigationMobileVariants,
-} from '../framer/navbar-framer-motion';
+} from '../framer/navbar-framer-motion'
 
-const Navbar = ({ menuITems }) => {
-  const [isOpen, toggleOpen] = useCycle(false, true);
+const Navbar = ({menuITems}) => {
+  const [isOpen, toggleOpen] = useCycle(false, true)
 
   return (
     <motion.nav
@@ -77,22 +77,22 @@ const Navbar = ({ menuITems }) => {
             <motion.li
               whileTap={{
                 scale: 0.9,
-                transition: { duration: 0.2 },
+                transition: {duration: 0.2},
               }}
               whileHover={{
                 scale: 1.1,
-                transition: { duration: 0.2 },
+                transition: {duration: 0.2},
               }}
             >
               <Link href="/register">
                 <motion.a
                   whileTap={{
                     scale: 0.9,
-                    transition: { duration: 0.2 },
+                    transition: {duration: 0.2},
                   }}
                   whileHover={{
                     scale: 1.1,
-                    transition: { duration: 0.2 },
+                    transition: {duration: 0.2},
                   }}
                 >
                   <Button buttonType="inverted" className="w-24 ">
@@ -105,11 +105,11 @@ const Navbar = ({ menuITems }) => {
             <motion.li
               whileTap={{
                 scale: 0.9,
-                transition: { duration: 0.2 },
+                transition: {duration: 0.2},
               }}
               whileHover={{
                 scale: 1.1,
-                transition: { duration: 0.2 },
+                transition: {duration: 0.2},
               }}
             >
               <Link href="/login">
@@ -122,7 +122,7 @@ const Navbar = ({ menuITems }) => {
         </div>
       </div>
     </motion.nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

@@ -1,6 +1,9 @@
-import { motion } from 'framer-motion';
+import {motion} from 'framer-motion'
+import {FC} from 'react'
 
-const Path = ({ openPath, closedPath, ...rest }) => {
+type path = {openPath: string; closedPath: string}
+
+const Path: FC<path> = ({openPath, closedPath, ...rest}) => {
   return (
     <motion.path
       fill="transparent"
@@ -8,12 +11,12 @@ const Path = ({ openPath, closedPath, ...rest }) => {
       stroke="hsl(40, 70%,60%)"
       strokeLinecap="round"
       variants={{
-        open: { d: openPath, transition: { duration: 0.3 } },
-        closed: { d: closedPath, transition: { duration: 0.3 } },
+        open: {d: openPath, transition: {duration: 0.3}},
+        closed: {d: closedPath, transition: {duration: 0.3}},
       }}
       {...rest}
     ></motion.path>
-  );
-};
+  )
+}
 
-export default Path;
+export default Path

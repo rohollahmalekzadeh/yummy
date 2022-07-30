@@ -1,11 +1,11 @@
-import React from 'react';
-import { FC, InputHTMLAttributes } from 'react';
+import React from 'react'
+import {FC, InputHTMLAttributes} from 'react'
 
 type InputProps = {
-  label: string;
-} & InputHTMLAttributes<HTMLInputElement>;
+  label: string
+} & InputHTMLAttributes<HTMLInputElement>
 
-const Input: FC<InputProps> = ({ label, ...otherProps }) => {
+const Input: FC<InputProps> = ({label, ...otherProps}) => {
   return (
     <div className="relative w-11/12 self-center">
       <label
@@ -24,7 +24,7 @@ const Input: FC<InputProps> = ({ label, ...otherProps }) => {
         {...otherProps}
       />
     </div>
-  );
-};
+  )
+}
 
-export default Input;
+export default Input

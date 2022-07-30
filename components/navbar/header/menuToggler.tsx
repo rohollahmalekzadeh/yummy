@@ -1,7 +1,8 @@
-import React from 'react';
-import { Path } from '../../index';
+import React, {FC, MouseEventHandler} from 'react'
+import {Path} from '../../index'
 
-const MenuToggler = ({ toggle }) => {
+type MenuTogglerProps = {toggle: MouseEventHandler<HTMLButtonElement>}
+const MenuToggler: FC<MenuTogglerProps> = ({toggle}) => {
   return (
     <button onClick={toggle} className="focus:outline-none absolute top-6 ">
       <svg width="25" height="25" viewBox="0 0 23 23">
@@ -13,7 +14,7 @@ const MenuToggler = ({ toggle }) => {
         />
       </svg>
     </button>
-  );
-};
+  )
+}
 
-export default MenuToggler;
+export default MenuToggler
