@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Link from 'next/link';
 
-import { Button } from '../';
+import { Button } from '../index';
 import { motion } from 'framer-motion';
 
-const NavigationPcItems = ({ children }) => {
+type HeaderVertical = {
+  children: string;
+};
+
+const HeaderHorizontal: FC<HeaderVertical> = ({ children }) => {
   return (
     <motion.li
       whileTap={{
@@ -30,4 +34,4 @@ const NavigationPcItems = ({ children }) => {
   );
 };
 
-export default NavigationPcItems;
+export default HeaderHorizontal;

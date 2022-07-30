@@ -1,4 +1,6 @@
-export const sidebarVariants = {
+import { Variants } from 'framer-motion';
+
+export const sidebarVariants: Variants = {
   open: {
     clipPath: 'circle(1300px at 40px 40px)',
     transition: {
@@ -16,7 +18,7 @@ export const sidebarVariants = {
   },
 };
 
-export const navbarVariants = {
+export const navbarVariants: Variants = {
   open: {
     opacity: 1,
     y: 0,
@@ -28,7 +30,7 @@ export const navbarVariants = {
   closed: { opacity: 0, y: -300 },
 };
 
-export const navigationMobileVariants = {
+export const navigationMobileVariants: Variants = {
   open: {
     opacity: 1,
     display: 'inline-block',
@@ -51,7 +53,7 @@ export const navigationMobileVariants = {
   },
 };
 
-export const navigationMobileItemsVariants = {
+export const navigationMobileItemsVariants: Variants = {
   open: {
     y: 170,
     x: 0,

@@ -8,7 +8,7 @@ import { container, mainItem } from './framer/banner-framer-motion';
 const Banner = () => {
   const [loading, setLoading] = React.useState(true);
   return (
-    <AnimateSharedLayout type="crossfade">
+    <AnimateSharedLayout>
       <AnimatePresence>
         <motion.div
           className="relative h-screen "
@@ -29,7 +29,7 @@ const Banner = () => {
                 src="/assets/banner.jpg"
                 height={2000}
                 width={2000}
-                priority={100}
+                priority={true}
                 alt="banner"
                 className=" bg-no-repeat bg-cover rounded-md"
               />

@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { FC, ReactElement } from 'react';
 import Link from 'next/link';
 
 import { motion } from 'framer-motion';
 import { navigationMobileItemsVariants } from './framer/navbar-framer-motion';
-import { Button } from '../';
+import { Button } from '..';
 
-const NavigationMobileItems = ({ children }) => {
+type HeaderVertical = {
+  children: string;
+};
+
+const HeaderVertical: FC<HeaderVertical> = ({ children }) => {
   return (
     <motion.li
       className="ml-7 mb-6 border-2 even:border-orange-300 odd:border-amber-300 rounded-md hover:border-transparent"
@@ -21,11 +25,11 @@ const NavigationMobileItems = ({ children }) => {
     >
       <Link href={`/${children}`}>
         <Button buttonType="inverted" className="w-40">
-          Login
+          {children}
         </Button>
       </Link>
     </motion.li>
   );
 };
 
-export default NavigationMobileItems;
+export default HeaderVertical;

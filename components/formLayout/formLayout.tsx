@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { FC, ReactElement } from 'react';
 import classNames from 'classnames';
 
-const FormLayout = ({ className = '', children }) => {
+type FormLayoutProps = {
+  className?: string;
+  children: ReactElement;
+};
+
+const FormLayout: FC<FormLayoutProps> = ({ className = '', children }) => {
   return (
     <section
       className={classNames(

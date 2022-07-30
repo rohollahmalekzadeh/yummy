@@ -1,8 +1,14 @@
-import Image from 'next/image';
+import Image from '../node_modules/next/image';
 import React, { useState } from 'react';
-import Link from 'next/link';
+import Link from '../node_modules/next/link';
 
-import { Input, SuccessMessage, FormLayout, Form, Button } from '../components';
+import {
+  Input,
+  SuccessMessage,
+  FormLayout,
+  Form,
+  Button,
+} from '../components/index';
 
 const defaultFormFields = {
   email: '',
@@ -14,7 +20,7 @@ const USER_REGEX =
   /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
-export default function Login() {
+export default function Register() {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const [success, setSuccess] = useState(false);
   const [errorMsg, setErrMsg] = useState('');

@@ -1,8 +1,8 @@
 import React from 'react';
 import {
   MenuToggler,
-  NavigationMobileContainer,
-  NavigationMobileItems,
+  HeaderVertical,
+  HeaderHorizontal,
   NavigationPcItems,
   Button,
 } from '../index';
@@ -27,9 +27,9 @@ const Navbar = ({ menuITems }) => {
       animate="open"
       className="flex justify-between items-center h-16 w-full bg-orange-50 px-5 lg:px-24 fixed z-20 "
     >
-      {/* Mobile Navbar */}
+      {/* Vertical Navbar */}
       <motion.div
-        className="lg:hidden z-10  "
+        className="lg:hidden z-10"
         initial="closed"
         animate={isOpen ? 'open' : 'closed'}
       >
@@ -42,18 +42,18 @@ const Navbar = ({ menuITems }) => {
 
         <motion.ul className="mt-9" variants={navigationMobileVariants}>
           {menuITems.map((menuITem, idx) => (
-            <NavigationMobileItems key={idx} number={idx}>
+            <HeaderVertical key={idx} number={idx}>
               {menuITem}
-            </NavigationMobileItems>
+            </HeaderVertical>
           ))}
         </motion.ul>
       </motion.div>
 
-      {/* PC Navbar */}
+      {/* Horizontal Navbar */}
       <div className="hidden lg:inline-block lg:mb-2 ">
         <ul className="flex gap-2">
           {menuITems.map((item, idx) => (
-            <NavigationPcItems key={idx}>{item}</NavigationPcItems>
+            <HeaderHorizontal key={idx}>{item}</HeaderHorizontal>
           ))}
         </ul>
       </div>

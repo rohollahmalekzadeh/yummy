@@ -1,10 +1,18 @@
 import Link from '../../node_modules/next/link';
+import { FC } from 'react';
 
-const SuccessMessage = ({
+type SuccessMessageProps = {
+  SuccessMessage: string;
+  href: string;
+  buttonMessage?: string;
+  children?: JSX.Element | string;
+};
+
+const SuccessMessage: FC<SuccessMessageProps> = ({
   SuccessMessage,
   href,
-  buttonMessage = '',
-  children = '',
+  buttonMessage,
+  children,
 }) => {
   return (
     <div className="flex flex-col justify-center items-center">
