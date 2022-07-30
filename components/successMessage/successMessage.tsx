@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '../../node_modules/next/link';
 
 const SuccessMessage = ({
   SuccessMessage,
