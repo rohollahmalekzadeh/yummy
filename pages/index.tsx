@@ -1,5 +1,5 @@
-import Head from 'next/head';
-import { Banner } from '../components';
+import Head from 'next/head'
+import {Banner} from '../components'
 
 export default function Home() {
   return (
@@ -13,5 +13,5 @@ export default function Home() {
         <Banner />
       </div>
     </div>
-  );
+  )
 }

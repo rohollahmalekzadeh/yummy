@@ -2,8 +2,8 @@ import React, { FC, ReactElement } from 'react';
 import Link from 'next/link';
 
 import { motion } from 'framer-motion';
-import { navigationMobileItemsVariants } from './framer/navbar-framer-motion';
-import { Button } from '..';
+import { navigationMobileItemsVariants } from '../framer/navbar-framer-motion';
+import { Button } from '../../index';
 
 type HeaderVertical = {
   children: string;

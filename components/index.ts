@@ -1,10 +1,10 @@
 import { BUTTON_TYPES_CLASSES } from './button/button';
 
-export { default as Navbar } from './navbar/navbar';
-export { default as Path } from './navbar/path';
-export { default as MenuToggler } from './navbar/menuToggler';
-export { default as HeaderVertical } from './navbar/headerVertical';
-export { default as HeaderHorizontal } from './navbar/headerHorizontal';
+export { default as Navbar } from './navbar/header/navbar';
+export { default as Path } from './navbar/header/path';
+export { default as MenuToggler } from './navbar/header/menuToggler';
+export { default as HeaderVertical } from './navbar/header//headerVertical';
+export { default as HeaderHorizontal } from './navbar/header/headerHorizontal';
 export { default as Input } from './input/input';
 export { default as SuccessMessage } from './successMessage/successMessage';
 export { default as FormLayout } from './formLayout/formLayout';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Path } from '../index';
+import { Path } from '../../index';
 
 const MenuToggler = ({ toggle }) => {
   return (

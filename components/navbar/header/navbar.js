@@ -5,7 +5,7 @@ import {
   HeaderHorizontal,
   NavigationPcItems,
   Button,
-} from '../index';
+} from '../../index';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -15,7 +15,7 @@ import {
   sidebarVariants,
   navbarVariants,
   navigationMobileVariants,
-} from './framer/navbar-framer-motion';
+} from '../framer/navbar-framer-motion';
 
 const Navbar = ({ menuITems }) => {
   const [isOpen, toggleOpen] = useCycle(false, true);
