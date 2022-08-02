@@ -1,6 +1,13 @@
-import {ChangeEvent, FormEvent} from 'react'
+import React, {
+  ChangeEvent,
+  FC,
+  FormEvent,
+  useState,
+  useEffect,
+  useRef,
+} from 'react'
+
 import Image from 'next/image'
-import {useState, useEffect, useRef} from 'react'
 import Link from 'next/link'
 
 import {Input, SuccessMessage, FormLayout, Form, Button} from 'components'
@@ -10,7 +17,9 @@ const defaultFormFields = {
   password: '',
 }
 
-export default function Login() {
+export type Login = any
+
+const Login: FC<Login> = () => {
   const [formFields, setFormFields] = useState(defaultFormFields)
 
   const [errorMsg, setErrorMsg] = useState('')
@@ -30,9 +39,7 @@ export default function Login() {
     setErrorMsg('')
   }, [formFields.email, formFields.password])
 
-  const submitHandler = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-  }
+  const submitHandler = (e: FormEvent<HTMLFormElement>) => {}
 
   return (
     <main className="flex justify-around items-center lg:gap-10 px-4">
@@ -84,7 +91,9 @@ export default function Login() {
 
               <div className="flex flex-col justify-around gap-4 items-center">
                 <Button type="submit">Login</Button>
-                <Button buttonType="google">Login with Google</Button>
+                <Button type="button" buttonType="google">
+                  Login with Google
+                </Button>
               </div>
             </Form>
 
@@ -102,3 +111,5 @@ export default function Login() {
     </main>
   )
 }
+
+export default Login

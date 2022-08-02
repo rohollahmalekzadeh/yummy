@@ -1,7 +1,8 @@
-import '../styles/globals.css';
-import { Navbar } from '../components';
+import {Navbar} from '../components'
 
-function MyApp({ Component, pageProps }) {
+import '../styles/globals.css'
+
+function MyApp({Component, pageProps}) {
   return (
     <div className="overflow-y-auto h-screen">
       <Navbar menuITems={['Home', 'Menu', 'Blog', 'About us']} />
@@ -10,7 +11,7 @@ function MyApp({ Component, pageProps }) {
         <Component {...pageProps} />;
       </div>
     </div>
-  );
+  )
 }
 
-export default MyApp;
+export default MyApp
