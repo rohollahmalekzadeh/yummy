@@ -24,7 +24,8 @@
     "components/banner/bannerLoader.js",
     "lib/axios.js",
     "tailwind.config.js",
-    "components/navbar/header/navbar.js"
+    "components/navbar/header/navbar.js",
+    "pages/api/auth/[...nextauth].js"
   ],
   "exclude": ["node_modules"]
 }
