@@ -10,6 +10,7 @@ import {
 } from 'lib/firebase'
 
 import {defaultFormFields} from 'logic/authentication/register/register.utils'
+import {FirebaseError} from 'firebase/app'
 
 export default function Register() {
   const [formFields, setFormFields] = useState(defaultFormFields)
@@ -22,8 +23,34 @@ export default function Register() {
     setErrMsg('')
   }, [formFields])
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    if (
+      !Object.values(state).every((item) => {
+        return item === true
+      })
+    ) {
+      setErrMsg('Invalid Entry, check errors')
+    }
+
+    try {
+      const {user}: any = await createAuthUserWithEmailAndPassword(
+        formFields.email,
+        formFields.password,
+      )
+      console.log(user)
+      setSuccess((prev) => !prev)
+      await createUserDocumentFromAuth(user)
+      setFormFields(defaultFormFields)
+    } catch (error: any) {
+      if (error.code === 'auth/email-already-in-use') {
+        setErrMsg('Cannot create user, email already in use')
+      } else if (error.code === 'auth/invalid-email') {
+        setErrMsg('Cannot create user, invalid email')
+      } else {
+        console.log('user creation encountered an error', error)
+      }
+    }
   }
 
   return (
