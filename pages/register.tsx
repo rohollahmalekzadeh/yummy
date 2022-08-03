@@ -1,128 +1,28 @@
 import Image from '../node_modules/next/image'
 import React, {ChangeEvent, FormEvent, useEffect, useState} from 'react'
 import Link from '../node_modules/next/link'
-
 import {Input, SuccessMessage, FormLayout, Form, Button} from 'components'
+import useRegister from 'logic/authentication/register/useRegister'
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
-} from '../lib/firebase'
+} from 'lib/firebase'
 
-//TODO *REFACTOR*
-
-const defaultFormFields = {
-  email: '',
-  password: '',
-  confirmPassword: '',
-}
-const defaultFormValidFields = {
-  email: false,
-  password: false,
-  confirmPassword: false,
-}
-
-const defaultFormValidFieldsReducer = {
-  passwordLetter: false,
-  passwordLength: false,
-  passwordNumber: false,
-  passwordSymbol: false,
-  email: false,
-  confirmPassword: false,
-}
-
-const REGEX_email =
-  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-+.]+(?:\.[a-zA-Z0-9-]+)*$/
-
-const REGEX_PASSWORDLETTER = /^(?=.*[a-zA-Z]).{1,24}$/
-const REGEX_PASSWORDLENGTH = /^(?=.*).{8,24}$/
-const REGEX_PASSWORDNUMBER = /^(?=.*[0-9]).{1,24}$/
-const REGEX_PASSWORDSYMBOL = /^(?=.*[!@#$%]).{1,24}$/
-
-const reducer = (state: typeof defaultFormValidFieldsReducer, action: any) => {
-  switch (action.type) {
-    case 'email':
-      return {...state, email: REGEX_email.test(action.payload)}
-    case 'password':
-      return {
-        ...state,
-        passwordLetter: REGEX_PASSWORDLETTER.test(action.payload),
-        passwordLength: REGEX_PASSWORDLENGTH.test(action.payload),
-        passwordNumber: REGEX_PASSWORDNUMBER.test(action.payload),
-        passwordSymbol: REGEX_PASSWORDSYMBOL.test(action.payload),
-      }
-    case 'confirmPassword':
-      return {
-        ...state,
-        confirmPassword: action.payload,
-      }
-
-    default:
-      return state
-  }
-}
+import {defaultFormFields} from 'logic/authentication/register/register.utils'
 
 export default function Register() {
   const [formFields, setFormFields] = useState(defaultFormFields)
-  const [formValidFields, setFormValidFields] = useState(defaultFormValidFields)
-
-  const [state, dispatch] = React.useReducer(
-    reducer,
-    defaultFormValidFieldsReducer,
-  )
+  const {state, handleChange} = useRegister(formFields, setFormFields)
 
   const [success, setSuccess] = useState(false)
   const [errorMsg, setErrMsg] = useState('')
 
   useEffect(() => {
-    setFormFields({...formFields})
-    setFormValidFields({
-      ...formValidFields,
-      confirmPassword: !(formFields.password === formFields.confirmPassword),
-    })
-  }, [formFields.email, formFields.password, formFields.confirmPassword])
-
-  console.log(state)
-  useEffect(() => {
     setErrMsg('')
   }, [formFields])
 
-  useEffect(() => {
-    dispatch({
-      type: 'confirmPassword',
-      payload: formFields.confirmPassword === formFields.password,
-    })
-  }, [formFields.password, formFields.confirmPassword, state.confirmPassword])
-
-  useEffect(() => {
-    dispatch({type: 'email', payload: formFields.email})
-  }, [formFields.email, state.email])
-
-  useEffect(() => {
-    dispatch({type: 'password', payload: formFields.password})
-  }, [
-    formFields.password,
-    state.passwordLetter,
-    state.passwordNumber,
-    state.passwordSymbol,
-    state.passwordLength,
-  ])
-
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const {name, value} = event.target
-    setFormFields({...formFields, [name]: value})
-  }
-
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-
-    if (
-      formValidFields.email ||
-      formValidFields.password ||
-      formValidFields.confirmPassword
-    ) {
-      setErrMsg('Invalid Entry, Check errors')
-      return
-    }
   }
 
   return (
