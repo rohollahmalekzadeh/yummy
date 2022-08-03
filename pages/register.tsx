@@ -1,8 +1,9 @@
-import Image from '../node_modules/next/image'
-import React, {ChangeEvent, FormEvent, useEffect, useState} from 'react'
-import Link from '../node_modules/next/link'
+import Image from 'node_modules/next/image'
+import React, {FormEvent, useEffect, useState} from 'react'
+import Link from 'node_modules/next/link'
 import {Input, SuccessMessage, FormLayout, Form, Button} from 'components'
 import useRegister from 'logic/authentication/register/useRegister'
+
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
