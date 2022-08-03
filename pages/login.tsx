@@ -1,11 +1,4 @@
-import React, {
-  ChangeEvent,
-  FC,
-  FormEvent,
-  useState,
-  useEffect,
-  useRef,
-} from 'react'
+import React, {ChangeEvent, FC, FormEvent, useState, useEffect} from 'react'
 
 import Image from 'next/image'
 import Link from 'next/link'
@@ -25,12 +18,11 @@ const Login: FC<Login> = () => {
   const [errorMsg, setErrorMsg] = useState('')
   const [success, setSuccess] = useState(false)
 
-  const userRef = useRef()
-
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const {name, value} = event.target
 
     setFormFields({...formFields, [name]: value})
+    console.log(formFields)
   }
 
   useEffect(() => {}, [])
@@ -68,7 +60,6 @@ const Login: FC<Login> = () => {
 
             <Form onSubmit={submitHandler}>
               <Input
-                // ref={userRef}
                 label="email"
                 required
                 value={formFields.email}
