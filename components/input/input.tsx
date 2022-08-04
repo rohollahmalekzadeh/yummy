@@ -47,7 +47,7 @@ const Input: FC<InputProps> = ({
                   errorCheck[idx] &&
                   'text-emerald-500'
                 }
-                text-red-500 text-sm mb-1 ml-4 -translate-y-4 transition-color duration-300`}
+                text-red-500 text-sm ml-4 -translate-y-4 transition-color duration-300`}
             >
               {msg}
             </div>
@@ -57,7 +57,7 @@ const Input: FC<InputProps> = ({
             <div
               className={` ${
                 errorCheck1 && 'text-emerald-500'
-              } text-red-500 text-sm mb-1 ml-4 -translate-y-4 transition-color duration-300`}
+              } text-red-500 text-sm  ml-4 -translate-y-4 transition-color duration-300`}
             >
               {errorMessage}
             </div>

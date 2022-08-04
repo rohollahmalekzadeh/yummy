@@ -1,37 +1,52 @@
-import React, {ChangeEvent, FC, FormEvent, useState, useEffect} from 'react'
-
+import React, {ChangeEvent, FormEvent, useState, useEffect} from 'react'
+import {NextPage} from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 
 import {Input, SuccessMessage, FormLayout, Form, Button} from 'components'
+import {useUser} from '../contexts/userProvider'
+import {
+  signInAuthUserWithEmailAndPassword,
+  signInWithGoogleRedirect,
+} from 'lib/firebase'
 
 const defaultFormFields = {
   email: '',
   password: '',
 }
 
-export type Login = any
-
-const Login: FC<Login> = () => {
+//TODO REFACTOR
+const Login: NextPage = () => {
+  const {currentUser} = useUser()
   const [formFields, setFormFields] = useState(defaultFormFields)
 
   const [errorMsg, setErrorMsg] = useState('')
   const [success, setSuccess] = useState(false)
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const {name, value} = event.target
-
-    setFormFields({...formFields, [name]: value})
-    console.log(formFields)
-  }
-
-  useEffect(() => {}, [])
-
   useEffect(() => {
     setErrorMsg('')
+    setFormFields({...formFields})
   }, [formFields.email, formFields.password])
 
-  const submitHandler = (e: FormEvent<HTMLFormElement>) => {}
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const {name, value} = event.target
+    setFormFields({...formFields, [name]: value})
+  }
+
+  const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    try {
+      const {user}: any = await signInAuthUserWithEmailAndPassword(
+        formFields.email,
+        formFields.password,
+      )
+    } catch (e: any) {
+      if (e?.code === 'auth/wrong-password') {
+        console.log(e)
+      } else throw e
+    }
+  }
 
   return (
     <main className="flex justify-around items-center lg:gap-10 px-4">
@@ -82,7 +97,11 @@ const Login: FC<Login> = () => {
 
               <div className="flex flex-col justify-around gap-4 items-center">
                 <Button type="submit">Login</Button>
-                <Button type="button" buttonType="google">
+                <Button
+                  type="button"
+                  buttonType="google"
+                  onClick={signInWithGoogleRedirect}
+                >
                   Login with Google
                 </Button>
               </div>

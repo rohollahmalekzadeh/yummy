@@ -12,7 +12,7 @@ const FormLayout: FC<FormLayoutProps> = ({className = '', children}) => {
       className={classNames(
         className,
         `w-96 flex flex-col shadow-2xl rounded-xl backdrop-blur-3xl bg-white/20 
-        py-10 min-h-[700px] max-h-screen justify-center  text-xl `,
+        py-10 min-h-[700px] max-h-screen justify-around  text-xl `,
       )}
     >
       {children}

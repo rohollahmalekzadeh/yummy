@@ -1,9 +1,10 @@
-import Image from 'node_modules/next/image'
 import React, {FormEvent, useEffect, useState} from 'react'
+import {NextPage} from 'next'
+import Image from 'node_modules/next/image'
 import Link from 'node_modules/next/link'
+
 import {Input, SuccessMessage, FormLayout, Form, Button} from 'components'
 import useRegister from 'logic/authentication/register/useRegister'
-
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
@@ -11,7 +12,7 @@ import {
 
 import {defaultFormFields} from 'logic/authentication/register/register.utils'
 
-export default function Register() {
+const Register: NextPage = () => {
   const [formFields, setFormFields] = useState(defaultFormFields)
   const {state, handleChange} = useRegister(formFields, setFormFields)
 
@@ -73,7 +74,7 @@ export default function Register() {
           />
         ) : (
           <>
-            <h1 className="mx-auto mt-5 py-5 text-lg xl:text-xl opacity-70">
+            <h1 className="mx-auto py-5 text-lg xl:text-xl opacity-70">
               Register with your email and password
             </h1>
             {errorMsg && (
@@ -82,6 +83,7 @@ export default function Register() {
             <Form onSubmit={handleSubmit}>
               <Input
                 label="email"
+                required
                 value={formFields.email}
                 name="email"
                 id="email"
@@ -94,11 +96,11 @@ export default function Register() {
 
               <Input
                 label="password"
+                required
                 value={formFields.password}
                 name="password"
                 id="password"
                 type="password"
-                autoComplete="off"
                 onChange={handleChange}
                 errorMessage={[
                   'Password should be 8-20 characters',
@@ -118,9 +120,9 @@ export default function Register() {
                 label="confirm password"
                 value={formFields.confirmPassword}
                 name="confirmPassword"
+                required
                 id="confirm password"
                 type="password"
-                autoComplete="off"
                 onChange={handleChange}
                 errorMessage={"Passwords don't match!"}
                 errorCheck={state.confirmPassword}
@@ -146,3 +148,5 @@ export default function Register() {
     </main>
   )
 }
+
+export default Register
