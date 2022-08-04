@@ -13,7 +13,7 @@ export const defaultFormValidFieldsReducer = {
   confirmPassword: false,
 }
 
-export const REGEX_email =
+export const REGEX_EMAIL =
   /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-+.]+(?:\.[a-zA-Z0-9-]+)*$/
 export const REGEX_PASSWORDLETTER = /^(?=.*[a-zA-Z]).{1,24}$/
 export const REGEX_PASSWORDLENGTH = /^(?=.*).{8,24}$/
@@ -41,7 +41,7 @@ export const reducer = (
         ...state,
         email:
           typeof action.payload === 'string' &&
-          REGEX_email.test(action.payload),
+          REGEX_EMAIL.test(action.payload),
       }
     case 'password':
       return {

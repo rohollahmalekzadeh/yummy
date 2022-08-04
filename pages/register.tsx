@@ -10,7 +10,6 @@ import {
 } from 'lib/firebase'
 
 import {defaultFormFields} from 'logic/authentication/register/register.utils'
-import {FirebaseError} from 'firebase/app'
 
 export default function Register() {
   const [formFields, setFormFields] = useState(defaultFormFields)
@@ -88,20 +87,17 @@ export default function Register() {
                 id="email"
                 type="text"
                 autoComplete="off"
-                onChange={(e) => {
-                  handleChange(e)
-                }}
+                onChange={handleChange}
                 errorMessage={'It should be a valid email address!'}
                 errorCheck={state.email}
               />
-              {}
 
               <Input
                 label="password"
                 value={formFields.password}
                 name="password"
                 id="password"
-                type="text"
+                type="password"
                 autoComplete="off"
                 onChange={handleChange}
                 errorMessage={[
@@ -123,7 +119,7 @@ export default function Register() {
                 value={formFields.confirmPassword}
                 name="confirmPassword"
                 id="confirm password"
-                type="text"
+                type="password"
                 autoComplete="off"
                 onChange={handleChange}
                 errorMessage={"Passwords don't match!"}
