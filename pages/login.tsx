@@ -1,10 +1,17 @@
-import React, {ChangeEvent, FormEvent, useState, useEffect} from 'react'
+import React, {
+  ChangeEvent,
+  FormEvent,
+  useState,
+  useEffect,
+  useContext,
+} from 'react'
 import {NextPage} from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 
 import {Input, SuccessMessage, FormLayout, Form, Button} from 'components'
-import {useUser} from '../contexts/userProvider'
+import {UserContext} from '../contexts/userProvider'
+
 import {
   signInAuthUserWithEmailAndPassword,
   signInWithGoogleRedirect,
@@ -17,9 +24,7 @@ const defaultFormFields = {
 
 //TODO REFACTOR
 const Login: NextPage = () => {
-  const {currentUser} = useUser()
   const [formFields, setFormFields] = useState(defaultFormFields)
-
   const [errorMsg, setErrorMsg] = useState('')
   const [success, setSuccess] = useState(false)
 
@@ -37,7 +42,7 @@ const Login: NextPage = () => {
     e.preventDefault()
 
     try {
-      const {user}: any = await signInAuthUserWithEmailAndPassword(
+      await signInAuthUserWithEmailAndPassword(
         formFields.email,
         formFields.password,
       )

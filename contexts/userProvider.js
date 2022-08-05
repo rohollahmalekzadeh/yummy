@@ -1,33 +1,31 @@
-import {createContext, useEffect, useState, useContext} from 'react'
+import {createContext, useState, useEffect, useContext} from 'react'
+
 import {
   onAuthStateChangedListener,
   createUserDocumentFromAuth,
-} from '../lib/firebase'
+} from 'lib/firebase'
 
-export const userContext = createContext({
-  setCurrentUser: () => {},
-  currentUser: {},
+export const UserContext = createContext({
+  setCurrentUser: () => null,
+  currentUser: null,
 })
 
-const UserProvider = ({children}) => {
+export const useUser = () => useContext(UserContext)
+
+export const UserProvider = ({children}) => {
   const [currentUser, setCurrentUser] = useState(null)
   const value = {currentUser, setCurrentUser}
 
   useEffect(() => {
-    const unSubscriber = onAuthStateChangedListener((user) => {
-      if (user) createUserDocumentFromAuth(user)
+    const unsubscribe = onAuthStateChangedListener((user) => {
+      if (user) {
+        createUserDocumentFromAuth(user)
+      }
       setCurrentUser(user)
     })
 
-    return () => unSubscriber
+    return () => unsubscribe
   }, [])
 
-  return <userContext.Provider value={value}>{children}</userContext.Provider>
+  return <UserContext.Provider value={value}>{children}</UserContext.Provider>
 }
-
-export const useUser = () => {
-  const [currentUser, setCurrentUser] = useContext(userContext)
-  return {currentUser, setCurrentUser}
-}
-
-export default UserProvider

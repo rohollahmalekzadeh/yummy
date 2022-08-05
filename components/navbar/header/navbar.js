@@ -1,15 +1,13 @@
 import React from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+
 import {
   MenuToggler,
   HeaderVertical,
   HeaderHorizontal,
-  NavigationPcItems,
   Button,
 } from '../../index'
-
-import Image from 'next/image'
-import Link from 'next/link'
-
 import {motion, useCycle} from 'framer-motion'
 import {
   sidebarVariants,
@@ -17,8 +15,12 @@ import {
   navigationMobileVariants,
 } from '../framer/navbar-framer-motion'
 
+import {useUser} from 'contexts/userProvider'
+import {singOutUser} from 'lib/firebase'
+
 const Navbar = ({menuITems}) => {
   const [isOpen, toggleOpen] = useCycle(false, true)
+  const {currentUser} = useUser()
 
   return (
     <motion.nav
@@ -74,18 +76,13 @@ const Navbar = ({menuITems}) => {
 
         <div>
           <ul className="flex gap-x-2  lg:gap-2">
-            <motion.li
-              whileTap={{
-                scale: 0.9,
-                transition: {duration: 0.2},
-              }}
-              whileHover={{
-                scale: 1.1,
-                transition: {duration: 0.2},
-              }}
-            >
-              <Link href="/register">
-                <motion.a
+            {currentUser ? (
+              <Button onClick={singOutUser} type="button">
+                SingOut
+              </Button>
+            ) : (
+              <>
+                <motion.li
                   whileTap={{
                     scale: 0.9,
                     transition: {duration: 0.2},
@@ -95,29 +92,41 @@ const Navbar = ({menuITems}) => {
                     transition: {duration: 0.2},
                   }}
                 >
-                  <Button buttonType="inverted" className="w-24 ">
-                    Register
-                  </Button>
-                </motion.a>
-              </Link>
-            </motion.li>
-
-            <motion.li
-              whileTap={{
-                scale: 0.9,
-                transition: {duration: 0.2},
-              }}
-              whileHover={{
-                scale: 1.1,
-                transition: {duration: 0.2},
-              }}
-            >
-              <Link href="/login">
-                <motion.a>
-                  <Button className="w-24">Login</Button>
-                </motion.a>
-              </Link>
-            </motion.li>
+                  <Link href="/register">
+                    <motion.a
+                      whileTap={{
+                        scale: 0.9,
+                        transition: {duration: 0.2},
+                      }}
+                      whileHover={{
+                        scale: 1.1,
+                        transition: {duration: 0.2},
+                      }}
+                    >
+                      <Button buttonType="inverted" className="w-24 ">
+                        Register
+                      </Button>
+                    </motion.a>
+                  </Link>
+                </motion.li>
+                <motion.li
+                  whileTap={{
+                    scale: 0.9,
+                    transition: {duration: 0.2},
+                  }}
+                  whileHover={{
+                    scale: 1.1,
+                    transition: {duration: 0.2},
+                  }}
+                >
+                  <Link href="/login">
+                    <motion.a>
+                      <Button className="w-24">Login</Button>
+                    </motion.a>
+                  </Link>
+                </motion.li>
+              </>
+            )}
           </ul>
         </div>
       </div>
