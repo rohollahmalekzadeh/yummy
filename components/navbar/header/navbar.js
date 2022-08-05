@@ -20,6 +20,7 @@ import {singOutUser} from 'lib/firebase'
 
 const Navbar = ({menuITems}) => {
   const [isOpen, toggleOpen] = useCycle(false, true)
+
   const {currentUser} = useUser()
 
   return (
@@ -27,7 +28,7 @@ const Navbar = ({menuITems}) => {
       variants={navbarVariants}
       initial="closed"
       animate="open"
-      className="flex justify-between items-center h-16 w-full bg-orange-50 px-5 lg:px-24 fixed z-20 "
+      className="flex justify-between items-center h-16 w-full bg-orange-50 px-5 lg:px-24 fixed z-50"
     >
       {/* Vertical Navbar */}
       <motion.div
@@ -36,9 +37,22 @@ const Navbar = ({menuITems}) => {
         animate={isOpen ? 'open' : 'closed'}
       >
         <motion.div
-          className="bg-white absolute top-0 left-0 h-screen  w-64   "
+          className="bg-white absolute -top-1 left-0 h-screen  w-64   "
           variants={sidebarVariants}
         />
+
+        <Link href="/">
+          <a className="bg-orange-50 absolute ml-14 top-2 hover:bg-orange-50">
+            <Image
+              src="/assets/logo2.jpg"
+              width="42"
+              height="42"
+              alt="Logo"
+              className="rounded-full bg-transparent cursor-pointer"
+              quality={100}
+            />
+          </a>
+        </Link>
 
         <MenuToggler toggle={() => toggleOpen()} />
 
@@ -52,8 +66,20 @@ const Navbar = ({menuITems}) => {
       </motion.div>
 
       {/* Horizontal Navbar */}
-      <div className="hidden lg:inline-block lg:mb-2 ">
+      <div className="hidden lg:inline-block mt-1">
         <ul className="flex gap-2">
+          <Link href="/">
+            <a className="bg-orange-50 mr-2 hover:bg-orange-50">
+              <Image
+                src="/assets/logo2.jpg"
+                width="40"
+                height="40"
+                alt="Logo"
+                className="rounded-full cursor-pointer bg-black"
+                quality={100}
+              />
+            </a>
+          </Link>
           {menuITems.map((item, idx) => (
             <HeaderHorizontal key={idx}>{item}</HeaderHorizontal>
           ))}
@@ -61,23 +87,10 @@ const Navbar = ({menuITems}) => {
       </div>
 
       <div className="flex gap-x-3 lg:gap-8 ">
-        <Link href="/">
-          <a className="bg-orange-50 hover:bg-orange-50">
-            <Image
-              src="/assets/logo2.jpg"
-              width="40"
-              height="40"
-              alt="Logo"
-              className="rounded-full cursor-pointer bg-black"
-              quality={100}
-            />
-          </a>
-        </Link>
-
         <div>
           <ul className="flex gap-x-2  lg:gap-2">
             {currentUser ? (
-              <Button onClick={singOutUser} type="button">
+              <Button onClick={singOutUser} className="w-24">
                 SingOut
               </Button>
             ) : (
@@ -103,7 +116,7 @@ const Navbar = ({menuITems}) => {
                         transition: {duration: 0.2},
                       }}
                     >
-                      <Button buttonType="inverted" className="w-24 ">
+                      <Button buttonType="inverted" className="w-24">
                         Register
                       </Button>
                     </motion.a>

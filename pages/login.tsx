@@ -1,16 +1,9 @@
-import React, {
-  ChangeEvent,
-  FormEvent,
-  useState,
-  useEffect,
-  useContext,
-} from 'react'
+import React, {ChangeEvent, FormEvent, useState, useEffect} from 'react'
 import {NextPage} from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 
 import {Input, SuccessMessage, FormLayout, Form, Button} from 'components'
-import {UserContext} from '../contexts/userProvider'
 
 import {
   signInAuthUserWithEmailAndPassword,
@@ -47,9 +40,9 @@ const Login: NextPage = () => {
         formFields.password,
       )
     } catch (e: any) {
-      if (e?.code === 'auth/wrong-password') {
-        console.log(e)
-      } else throw e
+      if (e?.code === 'auth/wrong-password') setErrorMsg('Password is wrong')
+      else if (e?.code === 'auth/user-not-found') setErrorMsg('User not found')
+      else throw e
     }
   }
 
@@ -77,6 +70,10 @@ const Login: NextPage = () => {
             <h1 className="mx-auto mt-10 py-10 text-base lg:text-xl opacity-70">
               Login with your email and password
             </h1>
+
+            {errorMsg && (
+              <h3 className="mx-auto p-5 text-red-500">{errorMsg}</h3>
+            )}
 
             <Form onSubmit={submitHandler}>
               <Input

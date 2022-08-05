@@ -1,4 +1,4 @@
-import { Variants } from 'framer-motion';
+import {Variants} from 'framer-motion'
 
 export const sidebarVariants: Variants = {
   open: {
@@ -16,7 +16,7 @@ export const sidebarVariants: Variants = {
       ease: 'easeOut',
     },
   },
-};
+}
 
 export const navbarVariants: Variants = {
   open: {
@@ -25,10 +25,11 @@ export const navbarVariants: Variants = {
     transition: {
       duration: 0.5,
       ease: 'easeOut',
+      delay: 3.4,
     },
   },
-  closed: { opacity: 0, y: -300 },
-};
+  closed: {opacity: 0, y: -300},
+}
 
 export const navigationMobileVariants: Variants = {
   open: {
@@ -51,7 +52,7 @@ export const navigationMobileVariants: Variants = {
       duration: 0.3,
     },
   },
-};
+}
 
 export const navigationMobileItemsVariants: Variants = {
   open: {
@@ -74,4 +75,4 @@ export const navigationMobileItemsVariants: Variants = {
       ease: [0.6, 0.05, -0.01, 0.9],
     },
   },
-};
+}

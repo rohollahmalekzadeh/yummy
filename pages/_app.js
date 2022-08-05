@@ -4,10 +4,10 @@ import {UserProvider} from '../contexts/userProvider'
 
 import '../styles/globals.css'
 
-function MyApp({Component, session, pageProps}) {
+function MyApp({Component, pageProps}) {
   return (
     <UserProvider>
-      <div className="overflow-y-auto h-screen">
+      <div className="overflow-y-auto overflow-x-hidden h-screen">
         <Navbar menuITems={['Home', 'Menu', 'Blog', 'About us']} />
         <br />
         <div className="mt-14">

@@ -4,7 +4,7 @@ import {Path} from '../../index'
 type MenuTogglerProps = {toggle: MouseEventHandler<HTMLButtonElement>}
 const MenuToggler: FC<MenuTogglerProps> = ({toggle}) => {
   return (
-    <button onClick={toggle} className="focus:outline-none absolute top-6 ">
+    <button onClick={toggle} className="focus:outline-none  absolute top-5 ">
       <svg width="25" height="25" viewBox="0 0 23 23">
         <Path openPath="M 3 16.5 L 17 2.5" closedPath="M 2 2.5 L 20 2.5" />
         <Path closedPath="M 2 9.423 L 20 9.423" openPath="" />
