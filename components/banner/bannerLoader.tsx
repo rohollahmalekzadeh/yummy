@@ -8,13 +8,12 @@ import {
   item3,
   item4,
 } from './framer/banner-framer-motion'
-import React, {FC, SetStateAction} from 'react'
+import React, {FC} from 'react'
 
-type BannerLoaderProps = {
-  setLoading: React.Dispatch<SetStateAction<boolean>>
-  loading: boolean
-}
-const BannerLoader: FC<BannerLoaderProps> = ({loading, setLoading}) => {
+type BannerLoaderProps = {}
+const BannerLoader: FC<BannerLoaderProps> = () => {
+  const [loading, setLoading] = React.useState(true)
+
   return (
     <AnimatePresence>
       {loading && (

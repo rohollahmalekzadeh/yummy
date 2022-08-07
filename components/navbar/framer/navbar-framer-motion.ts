@@ -25,7 +25,7 @@ export const navbarVariants: Variants = {
     transition: {
       duration: 0.5,
       ease: 'easeOut',
-      delay: 3.4,
+      delay: 0.3,
     },
   },
   closed: {opacity: 0, y: -300},

@@ -22,7 +22,7 @@
     "**/*.tsx",
     "components/formLayout/formLayout.js",
     "components/banner/bannerLoader.js",
-    "lib/axios.js",
+    "axios/axios.ts",
     "tailwind.config.js",
     "components/navbar/header/navbar.js",
     "pages/api/auth/[...nextauth].js"

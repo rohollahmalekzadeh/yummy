@@ -1,7 +1,42 @@
 import Head from 'next/head'
 import {Banner} from 'components'
+import {
+  getOrderListByFood,
+  getOrderListByDiet,
+  getOrderListByMeal,
+} from 'network/food-api/order-list'
 
-export default function Home() {
+import {normalizeDataForPoster} from 'utils/utils'
+
+export async function getStaticProps() {
+  const highProtein = await getOrderListByDiet('high-protein')
+  const juices = await getOrderListByFood('juice')
+  const brunch = await getOrderListByMeal('brunch')
+
+  const highProteinList = normalizeDataForPoster(highProtein, {
+    sliceFrom: 0,
+    sliceTo: 5,
+  })
+
+  const juicesList = normalizeDataForPoster(juices, {
+    sliceFrom: 0,
+    sliceTo: 5,
+  })
+
+  const brunchList = normalizeDataForPoster(brunch, {
+    sliceFrom: 0,
+    sliceTo: 5,
+  })
+
+  return {
+    props: {highProteinList, juicesList, brunchList},
+  }
+}
+
+const Home = ({highProteinList, juicesList, brunchList}: any) => {
+  console.log(highProteinList)
+  console.log(juicesList)
+  console.log(brunchList)
   return (
     <div>
       <Head>
@@ -15,3 +50,5 @@ export default function Home() {
     </div>
   )
 }
+
+export default Home
