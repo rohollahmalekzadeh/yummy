@@ -5,11 +5,11 @@ import {motion} from 'framer-motion'
 import {navigationMobileItemsVariants} from '../framer/navbar-framer-motion'
 import {Button} from 'components'
 
-type HeaderVertical = {
+type HeaderVerticalProps = {
   children: string
 }
 
-const HeaderVertical: FC<HeaderVertical> = ({children}) => {
+const HeaderVertical: FC<HeaderVerticalProps> = ({children}) => {
   return (
     <motion.li
       className="ml-7 mb-6 border-2 even:border-orange-300 odd:border-amber-300 rounded-md hover:border-transparent"

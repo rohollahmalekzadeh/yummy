@@ -11,6 +11,10 @@ export {default as FormLayout} from 'components/formLayout/formLayout'
 export {default as Form} from 'components/form/form'
 export {default as Button} from 'components/button/button'
 export {default as BannerLoader} from 'components/banner/bannerLoader'
+export {default as OrderPoster} from 'components/orderPoster/orderPoster'
+export {default as SingleStar} from 'components/star/singleStar'
+export {default as Bookmark} from 'components/bookmark/bookmark'
+export {default as Price} from 'components/price/price'
 
 export {BUTTON_TYPES_CLASSES} from 'components/button/button'
 

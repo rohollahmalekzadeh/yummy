@@ -5,7 +5,7 @@ export const getOrderListByFood = async (query: FOOD_TYPE) => {
   try {
     const data = await fetch(url)
     const res = await data.json()
-    return res
+    return {...res, title: query}
   } catch (e) {
     throw e
   }
@@ -16,7 +16,7 @@ export const getOrderListByDiet = async (query: DIET_LABELS) => {
   try {
     const data = await fetch(url)
     const res = await data.json()
-    return res
+    return {...res, title: query}
   } catch (e) {
     throw e
   }
@@ -27,7 +27,7 @@ export const getOrderListByMeal = async (query: MEAL_TYPE) => {
   try {
     const data = await fetch(url)
     const res = await data.json()
-    return res
+    return {...res, title: query}
   } catch (e) {
     throw e
   }
