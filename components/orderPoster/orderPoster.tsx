@@ -1,13 +1,12 @@
-import React, {FC} from 'react'
+import React, {FC, ReactNode} from 'react'
 import Image from 'next/image'
 import {Button, SingleStar, Bookmark, Price} from 'components'
 import {MdOutlineFoodBank} from 'react-icons/md'
 
 type OrderPosterProps = {
-  label?: string
+  label: string
   image: string
   price?: number
-  score?: number
   off?: number
 }
 
@@ -15,12 +14,11 @@ const OrderPoster: FC<OrderPosterProps> = ({
   image,
   label,
   price = 200,
-  score = 0,
   off = 20,
 }) => {
   return (
     <div
-      className="w-max h-[400px] flex flex-col bg-white rounded-lg cursor-pointer"
+      className="w-max h-[370px] flex flex-col bg-white rounded-lg cursor-pointer"
       onClick={() => {
         console.log('first')
       }}
@@ -33,7 +31,9 @@ const OrderPoster: FC<OrderPosterProps> = ({
         className="rounded-xl"
       />
       <div className="flex justify-between p-2 pb-0 ny-auto">
-        <div className="w-[240px] p-1 pt-0 text-base">{label}</div>
+        <div className="w-[240px] p-1 pt-0 text-base">
+          {label.length < 23 ? label : `${label.slice(0, 24)}...`}
+        </div>
         <Bookmark />
       </div>
       <div className="flex justify-around p-1">
@@ -41,8 +41,12 @@ const OrderPoster: FC<OrderPosterProps> = ({
           <Button className="w-11/12 my-auto  mb-2 ">
             <MdOutlineFoodBank className="my-auto mr-1 text-2xl" /> Add to cart
           </Button>
-          <SingleStar score={score} />
+          <SingleStar label={label} />
         </div>
+        {/*
+        //*2 levels props drilling should be ok  
+        //! Do not change it like compound component or same patterns . let it be clean!
+         */}
         <Price price={price} off={off} />
       </div>
     </div>

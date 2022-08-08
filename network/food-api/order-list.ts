@@ -1,34 +1,36 @@
-import {DIET_LABELS, MEAL_TYPE, FOOD_TYPE, baseUrl} from './config'
+import {
+  FOOD_MENU,
+  FOOD_QUERY,
+  MEAL_MENU,
+  MEAL_QUERY,
+  DIET_MENU,
+  DIET_QUERY,
+  baseUrl,
+} from './config'
 
-export const getOrderListByFood = async (query: FOOD_TYPE) => {
-  const url = `${baseUrl}&q=${query}`
-  try {
-    const data = await fetch(url)
-    const res = await data.json()
-    return {...res, title: query}
-  } catch (e) {
-    throw e
-  }
+export function getFooDData(type: typeof MEAL_QUERY): {
+  (query: MEAL_MENU): Promise<any>
 }
 
-export const getOrderListByDiet = async (query: DIET_LABELS) => {
-  const url = `${baseUrl}&diet=${query}`
-  try {
-    const data = await fetch(url)
-    const res = await data.json()
-    return {...res, title: query}
-  } catch (e) {
-    throw e
-  }
+export function getFooDData(type: typeof FOOD_QUERY): {
+  (query: FOOD_MENU): Promise<any>
 }
 
-export const getOrderListByMeal = async (query: MEAL_TYPE) => {
-  const url = `${baseUrl}&mealType=${query}`
-  try {
-    const data = await fetch(url)
-    const res = await data.json()
-    return {...res, title: query}
-  } catch (e) {
-    throw e
+export function getFooDData(type: typeof DIET_QUERY): {
+  (query: DIET_MENU): Promise<any>
+}
+
+export function getFooDData(type: any) {
+  return async function (query: any) {
+    const url = `${baseUrl}&${type}=${query}`
+
+    try {
+      const data = await fetch(url)
+      const res = await data.json()
+
+      return {...res, title: query}
+    } catch (e) {
+      throw e
+    }
   }
 }

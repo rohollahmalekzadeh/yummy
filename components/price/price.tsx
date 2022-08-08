@@ -2,11 +2,13 @@ import React, {FC} from 'react'
 
 type PriceProps = {
   price: number
-  off: number
+  off?: number
 }
 
 const Price: FC<PriceProps> = ({price, off = 0}) => {
   const realPrice = off > 0 ? price - (price * off) / 100 : price
+
+  if (!price) return <span>not available</span>
 
   return (
     <span className="flex flex-col justify-start items-center w-[90px]">

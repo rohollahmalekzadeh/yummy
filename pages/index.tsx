@@ -1,17 +1,21 @@
 import Head from 'next/head'
-import {Banner, OrderPoster} from 'components'
+import {Banner, OrderPoster, Price} from 'components'
+import {getFooDData} from 'network/food-api/order-list'
 import {
-  getOrderListByFood,
-  getOrderListByDiet,
-  getOrderListByMeal,
-} from 'network/food-api/order-list'
+  DIET_MENU,
+  DIET_QUERY,
+  FOOD_MENU,
+  FOOD_QUERY,
+  MEAL_MENU,
+  MEAL_QUERY,
+} from 'network/food-api/config'
 
 import {normalizeDataForPoster} from 'utils/utils'
 
 export async function getStaticProps() {
-  const highProtein = await getOrderListByDiet('high-protein')
-  const juices = await getOrderListByFood('juice')
-  const brunch = await getOrderListByMeal('brunch')
+  const highProtein = await getFooDData(DIET_QUERY)(DIET_MENU.HIGH_PROTEIN)
+  const brunch = await getFooDData(MEAL_QUERY)(MEAL_MENU.BRUNCH)
+  const juices = await getFooDData(FOOD_QUERY)(FOOD_MENU.JUICE)
 
   const highProteinList = normalizeDataForPoster(highProtein, {
     sliceFrom: 0,
@@ -31,8 +35,8 @@ export async function getStaticProps() {
   return {
     props: {
       highProteinList: {...highProteinList, title: highProtein.title},
-      juicesList: {...juicesList, title: juices.title},
-      brunchList: {...brunchList, title: brunch.title},
+      juicesList: {...juicesList, title: highProtein.title},
+      brunchList: {...brunchList, title: highProtein.title},
     },
   }
 }

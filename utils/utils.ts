@@ -7,7 +7,10 @@ export const normalizeDataForPoster = (
     .map(({recipe}: any) => {
       const image = recipe.images.REGULAR.url
       const label = recipe.label
-      return {image, label}
+      const price = Math.round(
+        recipe.calories / 10 > 1 ? recipe.calories / 10 : 0,
+      )
+      return {image, label, price}
     })
 
   return normalizeData

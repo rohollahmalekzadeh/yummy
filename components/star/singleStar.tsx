@@ -2,10 +2,11 @@ import React, {FC} from 'react'
 import {BsStar, BsStarHalf, BsStarFill} from 'react-icons/bs'
 
 type SingleStarProps = {
-  score: number
+  label?: string
 }
 
-const SingleStar: FC<SingleStarProps> = ({score = 0}) => {
+const SingleStar: FC<SingleStarProps> = ({label}) => {
+  const score = 0
   return (
     <span className="flex items-center gap-1 ml-1">
       {score > 4 ? (
