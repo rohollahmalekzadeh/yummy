@@ -10,7 +10,7 @@ export enum DIET_MENU {
   LOW_SODIUM = 'low-sodium',
 }
 
-export const MEAL_QUERY = 'meal' as const
+export const MEAL_QUERY = 'mealType' as const
 export enum MEAL_MENU {
   BREAKFAST = 'breakfast',
   BRUNCH = 'brunch',
@@ -25,5 +25,4 @@ export enum FOOD_MENU {
   PIZZA = 'pizza',
   JUICE = 'juice',
   SALAD = 'salad',
-  // },
 }

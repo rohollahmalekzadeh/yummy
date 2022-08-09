@@ -18,15 +18,15 @@ const OrderPoster: FC<OrderPosterProps> = ({
 }) => {
   return (
     <div
-      className="w-max h-[370px] flex flex-col bg-white rounded-lg cursor-pointer"
+      className="w-max h-[310px] flex flex-col bg-white rounded-lg cursor-pointer"
       onClick={() => {
         console.log('first')
       }}
     >
       <Image
         src={image}
-        width={220}
-        height={240}
+        width={180}
+        height={200}
         alt={label}
         className="rounded-xl"
       />

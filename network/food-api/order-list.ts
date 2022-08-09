@@ -28,7 +28,7 @@ export function getFooDData(type: any) {
       const data = await fetch(url)
       const res = await data.json()
 
-      return {...res, title: query}
+      return {...res, title: query || type}
     } catch (e) {
       throw e
     }

@@ -7,5 +7,3 @@ const nextConfig = {
 }
 
 module.exports = nextConfig
-
-// webpack: ({experiments.topLevelAwait: true}),

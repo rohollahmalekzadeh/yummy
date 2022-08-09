@@ -1,6 +1,6 @@
 import {BUTTON_TYPES_CLASSES} from './button/button'
 
-export {default as Navbar} from 'components/navbar/header/navbar'
+export {default as Header} from 'components/navbar/header/header'
 export {default as Path} from 'components/navbar/header/path'
 export {default as MenuToggler} from 'components/navbar/header/menuToggler'
 export {default as HeaderVertical} from 'components/navbar/header//headerVertical'
@@ -12,9 +12,12 @@ export {default as Form} from 'components/form/form'
 export {default as Button} from 'components/button/button'
 export {default as BannerLoader} from 'components/banner/bannerLoader'
 export {default as OrderPoster} from 'components/orderPoster/orderPoster'
+export {default as Row} from 'components/row/row'
+export {default as RowsContainer} from 'components/rowsContainer/rowsContainer'
 export {default as SingleStar} from 'components/star/singleStar'
 export {default as Bookmark} from 'components/bookmark/bookmark'
 export {default as Price} from 'components/price/price'
+export {default as MapComponent} from 'components/mapComponent/mapComponent'
 
 export {BUTTON_TYPES_CLASSES} from 'components/button/button'
 

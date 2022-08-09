@@ -15,7 +15,11 @@ const Price: FC<PriceProps> = ({price, off = 0}) => {
       <span className="text-2xl">{realPrice}$</span>
       {off > 0 && (
         <>
-          <span className="ml-4 text-slate-400 before:my-3 before:absolute before:content-[''] before:w-10 before:z-10  before:h-[2px] before:bg-red-700 ">
+          <span
+            className="ml-4 text-slate-400 
+
+            "
+          >
             {price}$
           </span>
           <div className="">{off}% OFF</div>
@@ -26,3 +30,6 @@ const Price: FC<PriceProps> = ({price, off = 0}) => {
 }
 
 export default Price
+
+// before:my-3
+// before:absolute before:content-[''] before:w-10 before:z-10  before:h-[2px] before:bg-red-700
