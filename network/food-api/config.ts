@@ -1,5 +1,23 @@
 export const baseUrl = `https://api.edamam.com/api/recipes/v2?type=public&app_id=${process.env.EDAM_APP_ID}&app_key=${process.env.EDAM_API_KEY}`
 
+export const CATEGORY_MENU = [
+  {
+    name: 'Meal',
+    image:
+      'https://images.unsplash.com/photo-1524121963016-6d7476758c04?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80',
+  },
+  {
+    name: 'Food',
+    image:
+      'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+  },
+  {
+    name: 'Diet',
+    image:
+      'https://images.unsplash.com/photo-1625937286074-9ca519d5d9df?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80',
+  },
+]
+
 export const DIET_QUERY = 'diet' as const
 export enum DIET_MENU {
   HIGH_FIBER = 'high-fiber',
@@ -16,7 +34,6 @@ export enum MEAL_MENU {
   BRUNCH = 'brunch',
   LUNCH_DINNER = 'lunch/dinner',
   SNACK = 'snack',
-  TEATIME = 'teatime',
 }
 
 export const FOOD_QUERY = 'q' as const

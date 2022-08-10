@@ -1,5 +1,14 @@
 import Head from 'next/head'
-import {Banner, OrderPoster, Row, MapComponent, RowsContainer} from 'components'
+import Image from 'next/image'
+import Link from 'next/link'
+import {
+  Banner,
+  CategoryPoster,
+  Row,
+  MapComponent,
+  RowsContainer,
+} from 'components'
+import {buttonBase} from 'components/button/button'
 import {getFooDData} from 'network/food-api/order-list'
 import {
   DIET_MENU,
@@ -8,40 +17,42 @@ import {
   FOOD_QUERY,
   MEAL_MENU,
   MEAL_QUERY,
+  CATEGORY_MENU,
 } from 'network/food-api/config'
+
+import {motion, Variants} from 'framer-motion'
+
+import {BsArrowLeft} from 'react-icons/bs'
 
 import {normalizeDataForPoster} from 'utils/utils'
 
+const onHover: Variants = {
+  hover: {
+    translateX: -6,
+    transition: {
+      yoyo: Infinity,
+      duration: 0.3,
+    },
+  },
+}
+
+//! I'm going to change this
 export async function getStaticProps() {
-  // const highProtein = await getFooDData(DIET_QUERY)(DIET_MENU.HIGH_PROTEIN)
-  const juices = await getFooDData(FOOD_QUERY)(FOOD_MENU.JUICE)
-  const brunch = await getFooDData(MEAL_QUERY)(MEAL_MENU.BRUNCH)
+  const highProtein = await getFooDData(DIET_QUERY)(DIET_MENU.HIGH_PROTEIN)
 
-  // const highProteinList = normalizeDataForPoster(highProtein, {
-  //   sliceFrom: 0,
-  //   sliceTo: 4,
-  // })
-
-  const juicesList = normalizeDataForPoster(juices, {
-    sliceFrom: 0,
-    sliceTo: 4,
-  })
-
-  const brunchList = normalizeDataForPoster(brunch, {
+  const highProteinList = normalizeDataForPoster(highProtein, {
     sliceFrom: 0,
     sliceTo: 4,
   })
 
   return {
     props: {
-      // highProteinList: {data: [...highProteinList], title: highProtein.title},
-      juicesList: {data: [...juicesList], title: juices.title},
-      brunchList: {data: [...brunchList], title: brunch.title},
+      highProteinList: {...highProteinList, title: highProtein.title},
     },
   }
 }
 
-const Home = ({highProteinList, juicesList, brunchList}: any) => {
+const Home = ({highProteinList}: any) => {
   return (
     <div>
       <Head>
@@ -54,20 +65,8 @@ const Home = ({highProteinList, juicesList, brunchList}: any) => {
       </div>
 
       <RowsContainer>
-        <Row title={brunchList.title}>
-          <MapComponent
-            Component={OrderPoster}
-            data={brunchList.data}
-            key={brunchList.title}
-          />
-        </Row>
-
-        <Row title={juicesList.title}>
-          <MapComponent
-            Component={OrderPoster}
-            data={juicesList.data}
-            key={juicesList.title}
-          />
+        <Row title="Category">
+          <MapComponent Component={CategoryPoster} data={CATEGORY_MENU} />
         </Row>
       </RowsContainer>
     </div>

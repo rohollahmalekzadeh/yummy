@@ -18,6 +18,7 @@ export {default as SingleStar} from 'components/star/singleStar'
 export {default as Bookmark} from 'components/bookmark/bookmark'
 export {default as Price} from 'components/price/price'
 export {default as MapComponent} from 'components/mapComponent/mapComponent'
+export {default as CategoryPoster} from 'components/categoryPoster/categoryPoster'
 
 export {BUTTON_TYPES_CLASSES} from 'components/button/button'
 

@@ -1,7 +1,7 @@
 import {ButtonHTMLAttributes, FC} from 'react'
 import classNames from 'classnames'
 
-const buttonBase =
+export const buttonBase =
   'flex justify-center cursor-pointer w-64 text-2xl bg-orange-500 text-slate-100  hover:text-orange-500 hover:bg-orange-100  p-1 px-3 rounded-md  active:text-slate-100 active:bg-orange-500 transition duration-300  focus:outline-none  hover:shadow-orange-400 hover:shadow-lg '
 
 export enum BUTTON_TYPES_CLASSES {

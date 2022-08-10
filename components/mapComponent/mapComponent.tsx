@@ -1,7 +1,7 @@
-import React, {FC, ReactComponentElement} from 'react'
+import React, {FC} from 'react'
 
 type MapComponentProps = {
-  Component: any
+  Component: FC
   data: any[]
 }
 
@@ -10,9 +10,10 @@ const MapComponent: FC<MapComponentProps> = ({Component, data}) => {
     <>
       {data.map((item: any) => (
         <Component
-          label={item.label}
-          image={item.image}
-          key={`${item.label}`}
+          key={`${item.image} ${item?.label && item.label} ${
+            item?.name && item.name
+          }`}
+          {...item}
         />
       ))}
     </>

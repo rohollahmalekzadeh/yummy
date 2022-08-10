@@ -6,16 +6,13 @@ import {MdOutlineFoodBank} from 'react-icons/md'
 type OrderPosterProps = {
   label: string
   image: string
-  price?: number
+  price: number
   off?: number
 }
 
-const OrderPoster: FC<OrderPosterProps> = ({
-  image,
-  label,
-  price = 200,
-  off = 20,
-}) => {
+const OrderPoster: FC<OrderPosterProps> = ({...item}) => {
+  const {image, label, price, off} = item
+
   return (
     <div
       className="w-max h-[310px] flex flex-col bg-white rounded-lg cursor-pointer"
@@ -32,7 +29,7 @@ const OrderPoster: FC<OrderPosterProps> = ({
       />
       <div className="flex justify-between p-2 pb-0 ny-auto">
         <div className="w-[240px] p-1 pt-0 text-base">
-          {label.length < 23 ? label : `${label.slice(0, 24)}...`}
+          {label && label.length < 23 ? label : `${label.slice(0, 24)}...`}
         </div>
         <Bookmark />
       </div>
