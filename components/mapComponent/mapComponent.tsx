@@ -1,11 +1,12 @@
 import React, {FC} from 'react'
 
 type MapComponentProps = {
-  Component: FC
+  Component: FC<any>
   data: any[]
 }
 
 const MapComponent: FC<MapComponentProps> = ({Component, data}) => {
+  //*every element at currently api(Edamam) is without id so I'm going to make new key =))
   return (
     <>
       {data.map((item: any) => (

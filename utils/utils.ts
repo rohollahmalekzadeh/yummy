@@ -1,5 +1,5 @@
 const calculatePriceAndOff = (number: number) =>
-  Math.round(number / 10 > 1 ? number / 10 : 0)
+  Math.floor(number / 10 > 1 ? number / 10 : 0)
 
 export const normalizeDataForPoster = (
   data: any,
@@ -10,11 +10,13 @@ export const normalizeDataForPoster = (
     .map(({recipe}: any, idx: number) => {
       const image = recipe.images.REGULAR.url
       const label = recipe.label
-      const off = idx % 5 === 0 ? 0.2 : 0
+      const off = idx % 5 === 0 ? 20 : 0
       const price =
         idx % 5 === 0
-          ? calculatePriceAndOff(recipe.calories) -
-            calculatePriceAndOff(recipe.calories) * off
+          ? Math.floor(
+              calculatePriceAndOff(recipe.calories) -
+                calculatePriceAndOff(recipe.calories) / off,
+            )
           : calculatePriceAndOff(recipe.calories)
 
       return {image, label, price, off}

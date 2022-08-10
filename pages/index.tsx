@@ -1,14 +1,12 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import Link from 'next/link'
 import {
   Banner,
   CategoryPoster,
   Row,
   MapComponent,
   RowsContainer,
+  OrderPoster,
 } from 'components'
-import {buttonBase} from 'components/button/button'
 import {getFooDData} from 'network/food-api/order-list'
 import {
   DIET_MENU,
@@ -19,22 +17,7 @@ import {
   MEAL_QUERY,
   CATEGORY_MENU,
 } from 'network/food-api/config'
-
-import {motion, Variants} from 'framer-motion'
-
-import {BsArrowLeft} from 'react-icons/bs'
-
 import {normalizeDataForPoster} from 'utils/utils'
-
-const onHover: Variants = {
-  hover: {
-    translateX: -6,
-    transition: {
-      yoyo: Infinity,
-      duration: 0.3,
-    },
-  },
-}
 
 //! I'm going to change this
 export async function getStaticProps() {
@@ -42,12 +25,12 @@ export async function getStaticProps() {
 
   const highProteinList = normalizeDataForPoster(highProtein, {
     sliceFrom: 0,
-    sliceTo: 4,
-  })
+    sliceTo: 20,
+  }).filter((item: any) => item.off > 0 && item.price > 0)
 
   return {
     props: {
-      highProteinList: {...highProteinList, title: highProtein.title},
+      highProteinList: {items: [...highProteinList], title: highProtein.title},
     },
   }
 }
@@ -65,8 +48,25 @@ const Home = ({highProteinList}: any) => {
       </div>
 
       <RowsContainer>
-        <Row title="Category">
+        <Row
+          title="Category"
+          classname={`${
+            CATEGORY_MENU.length < 4
+              ? `xl:grid-cols-${CATEGORY_MENU.length}`
+              : ''
+          }`}
+        >
           <MapComponent Component={CategoryPoster} data={CATEGORY_MENU} />
+        </Row>
+        <Row
+          title="Hot price"
+          classname={`${
+            highProteinList.items.length < 4
+              ? `xl:grid-cols-${highProteinList.items.length}`
+              : ''
+          }`}
+        >
+          <MapComponent Component={OrderPoster} data={highProteinList.items} />
         </Row>
       </RowsContainer>
     </div>

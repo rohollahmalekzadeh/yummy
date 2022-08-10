@@ -21,26 +21,3 @@
     );
   }
 }
-
-/* @layer components {
-}
-
-@layer utilities {
-}
-
-ul.navMobile li:nth-child(1) {
-  border: 1px solid #ffa200;
-}
-
-ul.navMobile li:nth-child(2) {
-  border: 1px solid #fbbf24;
-}
-ul.navMobile li:nth-child(3) {
-  border: 1px solid #fcd34d;
-}
-ul.navMobile li:nth-child(4) {
-  border: 1px solid #fde68a;
-}
-ul.navMobile li:nth-child(5) {
-  border: 1px solid #fef3c7;
-} */

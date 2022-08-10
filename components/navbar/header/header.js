@@ -2,12 +2,8 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import {
-  MenuToggler,
-  HeaderVertical,
-  HeaderHorizontal,
-  Button,
-} from '../../index'
+import {MenuToggler, HeaderVertical, HeaderHorizontal, Button} from 'components'
+
 import {motion, useCycle} from 'framer-motion'
 import {
   sidebarVariants,
@@ -37,7 +33,7 @@ const Header = ({menuITems}) => {
         animate={isOpen ? 'open' : 'closed'}
       >
         <motion.div
-          className="bg-white absolute -top-1 left-0 h-screen  w-64   "
+          className="bg-white absolute -top-1 left-0 h-screen  w-52"
           variants={sidebarVariants}
         />
 

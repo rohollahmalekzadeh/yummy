@@ -18,8 +18,24 @@ const onHover: Variants = {
 const CategoryPoster: FC<any> = ({...item}) => {
   const {name, image} = item
   return (
-    <div key={name} className="relative">
-      <Image src={image} height={180} width={220} alt="Category" />
+    <motion.div
+      key={name}
+      className="relative h-[180px] hover:shadow-xl hover:shadow-amber-800 "
+      whileHover={{
+        translateY: -5,
+        scale: 1.02,
+        transition: {
+          duration: 0.3,
+        },
+      }}
+    >
+      <Image
+        src={image}
+        height={180}
+        width={220}
+        alt="Category"
+        className="rounded-t-md"
+      />
       <Link href="#">
         <motion.a
           whileHover="hover"
@@ -33,7 +49,7 @@ const CategoryPoster: FC<any> = ({...item}) => {
           </motion.span>
         </motion.a>
       </Link>
-    </div>
+    </motion.div>
   )
 }
 

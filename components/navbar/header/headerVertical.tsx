@@ -12,7 +12,7 @@ type HeaderVerticalProps = {
 const HeaderVertical: FC<HeaderVerticalProps> = ({children}) => {
   return (
     <motion.li
-      className="ml-7 mb-6 border-2 even:border-orange-300 odd:border-amber-300 rounded-md hover:border-transparent"
+      className="mb-6 border-2 even:border-orange-300 odd:border-amber-300 rounded-md hover:border-transparent"
       variants={navigationMobileItemsVariants}
       whileTap={{
         scale: 0.9,
@@ -24,7 +24,7 @@ const HeaderVertical: FC<HeaderVerticalProps> = ({children}) => {
       }}
     >
       <Link href={`/${children}`}>
-        <Button buttonType="inverted" className="w-40">
+        <Button buttonType="inverted" className="w-36">
           {children}
         </Button>
       </Link>

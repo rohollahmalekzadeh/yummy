@@ -2,6 +2,7 @@ import React, {FC, ReactNode} from 'react'
 import Image from 'next/image'
 import {Button, SingleStar, Bookmark, Price} from 'components'
 import {MdOutlineFoodBank} from 'react-icons/md'
+import {motion} from 'framer-motion'
 
 type OrderPosterProps = {
   label: string
@@ -14,8 +15,15 @@ const OrderPoster: FC<OrderPosterProps> = ({...item}) => {
   const {image, label, price, off} = item
 
   return (
-    <div
-      className="w-max h-[310px] flex flex-col bg-white rounded-lg cursor-pointer"
+    <motion.div
+      whileHover={{
+        translateY: -5,
+        scale: 1.02,
+        transition: {
+          duration: 0.3,
+        },
+      }}
+      className="w-max h-[310px] flex flex-col bg-white rounded-lg cursor-pointer hover:shadow-2xl hover:shadow-amber-800"
       onClick={() => {
         console.log('first')
       }}
@@ -46,7 +54,7 @@ const OrderPoster: FC<OrderPosterProps> = ({...item}) => {
          */}
         <Price price={price} off={off} />
       </div>
-    </div>
+    </motion.div>
   )
 }
 
