@@ -7,35 +7,39 @@ import {
   RowsContainer,
   OrderPoster,
 } from 'components'
-import {getFooDData} from 'network/food-api/order-list'
+import {getFoodData} from 'network/food-api/order-list'
 import {
-  DIET_MENU,
-  DIET_QUERY,
-  FOOD_MENU,
-  FOOD_QUERY,
-  MEAL_MENU,
   MEAL_QUERY,
+  MEAL_SINGLE_ITEM,
   CATEGORY_MENU,
 } from 'network/food-api/config'
-import {normalizeDataForPoster} from 'utils/utils'
+import {GetStaticProps} from 'next'
 
 //! I'm going to change this
-export async function getStaticProps() {
-  const highProtein = await getFooDData(DIET_QUERY)(DIET_MENU.HIGH_PROTEIN)
-
-  const highProteinList = normalizeDataForPoster(highProtein, {
-    sliceFrom: 0,
-    sliceTo: 20,
-  }).filter((item: any) => item.off > 0 && item.price > 0)
+export const getStaticProps: GetStaticProps = async (context) => {
+  const highProtein = await getFoodData(
+    MEAL_QUERY,
+    MEAL_SINGLE_ITEM.BREAKFAST,
+    {
+      sliceFrom: 0,
+      sliceTo: 20,
+    },
+  )
 
   return {
     props: {
-      highProteinList: {items: [...highProteinList], title: highProtein.title},
+      highProtein: {
+        ...highProtein,
+        // data: highProtein.data.filter(
+        //   (item: any) => item.off > 0 && item.price > 0,
+        // ),
+      },
     },
   }
 }
 
-const Home = ({highProteinList}: any) => {
+const Home = ({highProtein}: any) => {
+  console.log(highProtein)
   return (
     <div>
       <Head>
@@ -61,12 +65,12 @@ const Home = ({highProteinList}: any) => {
         <Row
           title="Hot price"
           classname={`${
-            highProteinList.items.length < 4
-              ? `xl:grid-cols-${highProteinList.items.length}`
+            highProtein.data.length < 4
+              ? `xl:grid-cols-${highProtein.data.length}`
               : ''
           }`}
         >
-          <MapComponent Component={OrderPoster} data={highProteinList.items} />
+          <MapComponent Component={OrderPoster} data={highProtein.data} />
         </Row>
       </RowsContainer>
     </div>

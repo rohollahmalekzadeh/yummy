@@ -38,7 +38,6 @@ const Register: NextPage = () => {
         formFields.email,
         formFields.password,
       )
-      console.log(user)
       setSuccess((prev) => !prev)
       await createUserDocumentFromAuth(user)
       setFormFields(defaultFormFields)

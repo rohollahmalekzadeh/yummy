@@ -19,7 +19,32 @@ export const CATEGORY_MENU = [
 ]
 
 export const DIET_QUERY = 'diet' as const
-export enum DIET_MENU {
+export const DIET_LIST = {
+  HIGH_FIBER: 'high-fiber',
+  HIGH_PROTEIN: 'high-protein',
+  // HIGH_CARB : 'low-carb',
+  // LOW_FAT : 'low-fat',
+  // BALANCED : 'Balanced',
+  // LOW_SODIUM : 'low-sodium',
+}
+
+export const MEAL_QUERY = 'mealType' as const
+export const MEAL_LIST = {
+  BREAKFAST: 'breakfast',
+  BRUNCH: 'brunch',
+  // LUNCH_DINNER : 'lunch/dinner',
+  // SNACK : 'snack',
+}
+
+export const FOOD_QUERY = 'q' as const
+export const FOOD_LIST = {
+  keKEBAB: 'kebab',
+  PIZZA: 'pizza',
+  // JUICE : 'juice',
+  // SALAD : 'salad',
+}
+
+export enum DIET_SINGLE_ITEM {
   HIGH_FIBER = 'high-fiber',
   HIGH_PROTEIN = 'high-protein',
   HIGH_CARB = 'low-carb',
@@ -28,16 +53,14 @@ export enum DIET_MENU {
   LOW_SODIUM = 'low-sodium',
 }
 
-export const MEAL_QUERY = 'mealType' as const
-export enum MEAL_MENU {
+export enum MEAL_SINGLE_ITEM {
   BREAKFAST = 'breakfast',
   BRUNCH = 'brunch',
   LUNCH_DINNER = 'lunch/dinner',
   SNACK = 'snack',
 }
 
-export const FOOD_QUERY = 'q' as const
-export enum FOOD_MENU {
+export enum FOOD_SINGLE_ITEM {
   keKEBAB = 'kebab',
   PIZZA = 'pizza',
   JUICE = 'juice',

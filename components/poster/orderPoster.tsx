@@ -24,15 +24,14 @@ const OrderPoster: FC<OrderPosterProps> = ({...item}) => {
         },
       }}
       className="w-max h-[310px] flex flex-col bg-white rounded-lg cursor-pointer hover:shadow-2xl hover:shadow-amber-800"
-      onClick={() => {
-        console.log('first')
-      }}
+      onClick={() => {}}
     >
       <Image
         src={image}
         width={180}
         height={200}
         alt={label}
+        priority={false}
         className="rounded-xl"
       />
       <div className="flex justify-between p-2 pb-0 ny-auto">
