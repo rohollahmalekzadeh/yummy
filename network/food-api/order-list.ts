@@ -39,31 +39,30 @@ export function fetchFoodData(type: any) {
 
 export async function getFoodData(
   type: typeof DIET_QUERY,
-  want: typeof DIET_LIST | DIET_SINGLE_ITEM,
+  query: typeof DIET_LIST | DIET_SINGLE_ITEM,
   {sliceFrom, sliceTo}: {sliceFrom: number; sliceTo: number},
 ): Promise<any>
 export async function getFoodData(
   type: typeof FOOD_QUERY,
-  want: typeof FOOD_LIST | FOOD_SINGLE_ITEM,
+  query: typeof FOOD_LIST | FOOD_SINGLE_ITEM,
   {sliceFrom, sliceTo}: {sliceFrom: number; sliceTo: number},
 ): Promise<any>
 export async function getFoodData(
   type: typeof MEAL_QUERY,
-  want: typeof MEAL_LIST | MEAL_SINGLE_ITEM,
+  query: typeof MEAL_LIST | MEAL_SINGLE_ITEM,
   {sliceFrom, sliceTo}: {sliceFrom: number; sliceTo: number},
 ): Promise<any>
 
 export async function getFoodData(
   type: any,
-  want: any,
+  query: any,
   {sliceFrom = 0, sliceTo = 2},
 ) {
   let data: any = []
-  const menu: any[] = typeof want === 'string' ? [want] : Object.values(want)
+  const menu: any[] = typeof query === 'string' ? [query] : Object.values(query)
   const FoodType = fetchFoodData(type)
 
   for (const menuItem of menu) {
-    console.log(want, menuItem)
     const foodList = await FoodType(menuItem)
     const normalizedData = await normalizeDataForPoster(foodList, {
       sliceFrom,
@@ -71,7 +70,7 @@ export async function getFoodData(
     })
     await data.push({data: normalizedData, title: foodList?.title})
   }
-  return typeof want === 'string' ? data[0] : data
+  return typeof query === 'string' ? data[0] : data
 }
 
 //
