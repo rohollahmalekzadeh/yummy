@@ -50,7 +50,7 @@ const OrderPoster: FC<OrderPosterProps> = ({...item}) => {
           {existingItem ? (
             <span className="flex justify-center gap-6">
               <Button
-                onClick={() => increaseCartQuantity(label)}
+                onClick={() => increaseCartQuantity(existingItem)}
                 className="w-7 h-7"
               >
                 +
@@ -66,7 +66,7 @@ const OrderPoster: FC<OrderPosterProps> = ({...item}) => {
           ) : (
             <Button
               className="w-11/12 my-auto mb-2"
-              onClick={() => increaseCartQuantity(label)}
+              onClick={() => increaseCartQuantity(item)}
             >
               <MdOutlineFoodBank className="my-auto mr-1 text-2xl" /> Add to
               cart

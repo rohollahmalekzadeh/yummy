@@ -6,7 +6,7 @@ export function useLocalStorage<T>(key: string, initialValue: T | (() => T)) {
       typeof window !== 'undefined' ? localStorage.getItem(key) : null
     if (jsonValue != null) return JSON.parse(jsonValue)
 
-    return typeof initialValue === 'function'
+    return typeof window !== 'undefined' && typeof initialValue === 'function'
       ? (initialValue as () => T)()
       : initialValue
   })
