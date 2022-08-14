@@ -2,7 +2,13 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import {MenuToggler, HeaderVertical, HeaderHorizontal, Button} from 'components'
+import {
+  MenuToggler,
+  HeaderVertical,
+  HeaderHorizontal,
+  Button,
+  ShoppingCart,
+} from 'components'
 
 import {motion, useCycle} from 'framer-motion'
 import {
@@ -84,7 +90,7 @@ const Header = ({menuITems}) => {
 
       <div className="flex gap-x-3 lg:gap-8 ">
         <div>
-          <ul className="flex gap-x-2  lg:gap-2">
+          <ul className="flex items-center gap-x-2 lg:gap-2">
             {currentUser ? (
               <Button onClick={singOutUser} className="w-24">
                 SingOut
@@ -112,7 +118,7 @@ const Header = ({menuITems}) => {
                         transition: {duration: 0.2},
                       }}
                     >
-                      <Button buttonType="inverted" className="w-24">
+                      <Button buttonType="inverted" className="w-28">
                         Register
                       </Button>
                     </motion.a>
@@ -130,12 +136,15 @@ const Header = ({menuITems}) => {
                 >
                   <Link href="/login">
                     <motion.a>
-                      <Button className="w-24">Login</Button>
+                      <Button className="w-28">Login</Button>
                     </motion.a>
                   </Link>
                 </motion.li>
               </>
             )}
+            <li>
+              <ShoppingCart />
+            </li>
           </ul>
         </div>
       </div>

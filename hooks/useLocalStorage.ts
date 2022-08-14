@@ -2,7 +2,8 @@ import {useEffect, useState} from 'react'
 
 export function useLocalStorage<T>(key: string, initialValue: T | (() => T)) {
   const [value, setValue] = useState<T>(() => {
-    const jsonValue = localStorage.getItem(key)
+    const jsonValue =
+      typeof window !== 'undefined' ? localStorage.getItem(key) : null
     if (jsonValue != null) return JSON.parse(jsonValue)
 
     return typeof initialValue === 'function'
@@ -14,5 +15,5 @@ export function useLocalStorage<T>(key: string, initialValue: T | (() => T)) {
     localStorage.setItem(key, JSON.stringify(value))
   }, [key, value])
 
-  return [value, setValue]
+  return [value, setValue] as [typeof value, typeof setValue]
 }

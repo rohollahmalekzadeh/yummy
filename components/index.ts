@@ -18,6 +18,7 @@ export {default as RowsContainer} from 'components/rowsContainer/rowsContainer'
 export {default as SingleStar} from 'components/star/singleStar'
 export {default as Bookmark} from 'components/bookmark/bookmark'
 export {default as Price} from 'components/price/price'
+export {default as ShoppingCart} from 'components/shoppingCart/shoppingCart'
 export {default as MapComponent} from 'components/mapComponent/mapComponent'
 
 export {BUTTON_TYPES_CLASSES} from 'components/button/button'

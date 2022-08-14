@@ -39,7 +39,7 @@ const CategoryPoster: FC<any> = ({...item}) => {
       <Link href="#">
         <motion.a
           whileHover="hover"
-          className={`${buttonBase} w-20 rounded-lg text-base absolute z-10 bottom-2 right-1`}
+          className={`${buttonBase} w-28 rounded-lg text-base absolute z-10 bottom-2 right-1`}
         >
           <motion.span className="flex justify-center items-center text-lg gap-1">
             <motion.span variants={onHover}>
