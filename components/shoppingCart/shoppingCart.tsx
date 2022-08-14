@@ -6,6 +6,7 @@ import {useShoppingCart} from 'contexts/ShoppingCartContext'
 
 const ShoppingCart = () => {
   const {cartQuantity} = useShoppingCart()
+
   return (
     <div className="relative flex justify-center items-center">
       <Link href="/shopping-cart">

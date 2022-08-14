@@ -3,6 +3,7 @@ import Image from 'next/image'
 import {Button, SingleStar, Bookmark, Price} from 'components'
 import {MdOutlineFoodBank} from 'react-icons/md'
 import {motion} from 'framer-motion'
+import {useShoppingCart} from 'contexts/ShoppingCartContext'
 
 type OrderPosterProps = {
   label: string
@@ -12,7 +13,11 @@ type OrderPosterProps = {
 }
 
 const OrderPoster: FC<OrderPosterProps> = ({...item}) => {
+  const {decreaseCartQuantity, increaseCartQuantity, cartItems} =
+    useShoppingCart()
   const {image, label, price, off} = item
+
+  const existingItem = cartItems.find((item) => item.label === label)
 
   return (
     <motion.div
@@ -42,9 +47,32 @@ const OrderPoster: FC<OrderPosterProps> = ({...item}) => {
       </div>
       <div className="flex justify-around p-1">
         <div className="w-full ">
-          <Button className="w-11/12 my-auto  mb-2 ">
-            <MdOutlineFoodBank className="my-auto mr-1 text-2xl" /> Add to cart
-          </Button>
+          {existingItem ? (
+            <span className="flex justify-center gap-6">
+              <Button
+                onClick={() => increaseCartQuantity(label)}
+                className="w-7 h-7"
+              >
+                +
+              </Button>
+              <span className="text-2xl">{existingItem.quantity}</span>
+              <Button
+                onClick={() => decreaseCartQuantity(label)}
+                className="w-7 h-7"
+              >
+                -
+              </Button>
+            </span>
+          ) : (
+            <Button
+              className="w-11/12 my-auto mb-2"
+              onClick={() => increaseCartQuantity(label)}
+            >
+              <MdOutlineFoodBank className="my-auto mr-1 text-2xl" /> Add to
+              cart
+            </Button>
+          )}
+
           <SingleStar label={label} />
         </div>
         {/*
