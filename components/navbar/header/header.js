@@ -64,7 +64,7 @@ const Header = ({menuITems}) => {
       {/* Horizontal Navbar */}
       <div className="hidden lg:inline-block mt-1">
         <ul className="flex gap-2">
-          <Link href="$">
+          <Link href="#">
             <a className="bg-orange-50 mr-2 hover:bg-orange-50">
               <Image
                 src="/assets/logo2.jpg"
