@@ -8,7 +8,6 @@ type PortalProps = {
 
 const Portal: FC<PortalProps> = ({id, children}) => {
   const [hasMounted, setHasMounted] = useState(false)
-  console.log('test')
 
   const portalElement = document.getElementById(id) as HTMLElement
   if (!portalElement) {

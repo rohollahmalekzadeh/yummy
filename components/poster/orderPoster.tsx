@@ -1,4 +1,4 @@
-import React, {FC, ReactNode, useState} from 'react'
+import React, {FC, useState} from 'react'
 import Image from 'next/image'
 import {Button, SingleStar, Bookmark, Price} from 'components'
 import {MdOutlineFoodBank} from 'react-icons/md'
@@ -16,12 +16,12 @@ const Modal = React.lazy(() => import('../modal/modal'))
 const Portal = React.lazy(() => import('../portal/portal'))
 
 const OrderPoster: FC<OrderPosterProps> = ({...item}) => {
-  const [portalIsOpen, setPortalIsOpen] = useState(false)
+  const {image, label, price, off} = item
+  const [modalIsOpen, setModalIsOpen] = useState(false)
+
   const {decreaseCartQuantity, increaseCartQuantity, cartItems} =
     useShoppingCart()
-  const {image, label, price, off} = item
-
-  const existingItem = cartItems.find((item) => item.label === label)
+  const currentlyItem = cartItems.find((item) => item.label === label)
 
   return (
     <motion.div
@@ -33,7 +33,7 @@ const OrderPoster: FC<OrderPosterProps> = ({...item}) => {
         },
       }}
       className="w-max h-[310px] flex flex-col bg-white rounded-lg cursor-pointer hover:shadow-2xl hover:shadow-amber-800"
-      onClick={() => setPortalIsOpen(true)}
+      onClick={() => setModalIsOpen(true)}
     >
       <Image
         src={image}
@@ -51,15 +51,15 @@ const OrderPoster: FC<OrderPosterProps> = ({...item}) => {
       </div>
       <div className="flex justify-around p-1">
         <div className="w-full ">
-          {existingItem ? (
+          {currentlyItem ? (
             <span className="flex justify-center gap-6">
               <Button
-                onClick={() => increaseCartQuantity(existingItem)}
+                onClick={() => increaseCartQuantity(currentlyItem)}
                 className="w-7 h-7"
               >
                 +
               </Button>
-              <span className="text-2xl">{existingItem.quantity}</span>
+              <span className="text-2xl">{currentlyItem.quantity}</span>
               <Button
                 onClick={() => decreaseCartQuantity(label)}
                 className="w-7 h-7"
@@ -81,17 +81,17 @@ const OrderPoster: FC<OrderPosterProps> = ({...item}) => {
         </div>
         {/*
         //*2 levels props drilling should be ok  
-        //! Do not change it like compound component or same patterns . let it be clean!
+        //! Do not change it something like compound component or other patterns . let it be clean!
          */}
         <Price price={price} off={off} />
       </div>
       {/* 
         //TODO: find loading fallback
       */}
-      {portalIsOpen && (
+      {modalIsOpen && (
         <React.Suspense fallback="loading...">
           <Portal id="modal-root">
-            <Modal {...item} />
+            <Modal setModalIsOpen={setModalIsOpen} {...item} />
           </Portal>
         </React.Suspense>
       )}

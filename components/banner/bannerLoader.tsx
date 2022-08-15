@@ -10,8 +10,10 @@ import {
 } from './framer/banner-framer-motion'
 import React, {FC} from 'react'
 
-type BannerLoaderProps = {}
-const BannerLoader: FC<BannerLoaderProps> = () => {
+type BannerLoaderProps = {
+  setMountImage: React.Dispatch<React.SetStateAction<boolean>>
+}
+const BannerLoader: FC<BannerLoaderProps> = ({setMountImage}) => {
   const [loading, setLoading] = React.useState(true)
 
   return (
@@ -20,7 +22,10 @@ const BannerLoader: FC<BannerLoaderProps> = () => {
         <motion.div
           className="relative h-screen overflow-hidden"
           variants={container}
-          onAnimationComplete={() => setLoading(false)}
+          onAnimationComplete={() => {
+            setLoading(false)
+            setMountImage(true)
+          }}
           initial="hidden"
           animate="show"
           exit="exit"
