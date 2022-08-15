@@ -20,6 +20,7 @@ export {default as Bookmark} from 'components/bookmark/bookmark'
 export {default as Price} from 'components/price/price'
 export {default as ShoppingCart} from 'components/shoppingCart/shoppingCart'
 export {default as MapComponent} from 'components/mapComponent/mapComponent'
+export {default as Modal} from 'components/modal/modal'
 
 export {BUTTON_TYPES_CLASSES} from 'components/button/button'
 
