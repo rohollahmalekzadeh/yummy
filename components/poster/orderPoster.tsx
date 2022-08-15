@@ -1,4 +1,4 @@
-import React, {FC, ReactNode} from 'react'
+import React, {FC, ReactNode, useState} from 'react'
 import Image from 'next/image'
 import {Button, SingleStar, Bookmark, Price} from 'components'
 import {MdOutlineFoodBank} from 'react-icons/md'
@@ -12,7 +12,11 @@ type OrderPosterProps = {
   off?: number
 }
 
+const Modal = React.lazy(() => import('../modal/modal'))
+const Portal = React.lazy(() => import('../portal/portal'))
+
 const OrderPoster: FC<OrderPosterProps> = ({...item}) => {
+  const [portalIsOpen, setPortalIsOpen] = useState(false)
   const {decreaseCartQuantity, increaseCartQuantity, cartItems} =
     useShoppingCart()
   const {image, label, price, off} = item
@@ -29,7 +33,7 @@ const OrderPoster: FC<OrderPosterProps> = ({...item}) => {
         },
       }}
       className="w-max h-[310px] flex flex-col bg-white rounded-lg cursor-pointer hover:shadow-2xl hover:shadow-amber-800"
-      onClick={() => {}}
+      onClick={() => setPortalIsOpen(true)}
     >
       <Image
         src={image}
@@ -81,6 +85,16 @@ const OrderPoster: FC<OrderPosterProps> = ({...item}) => {
          */}
         <Price price={price} off={off} />
       </div>
+      {/* 
+        //TODO: find loading fallback
+      */}
+      {portalIsOpen && (
+        <React.Suspense fallback="loading...">
+          <Portal id="modal-root">
+            <Modal {...item} />
+          </Portal>
+        </React.Suspense>
+      )}
     </motion.div>
   )
 }
