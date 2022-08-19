@@ -17,13 +17,17 @@ const useRegister = (
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const {name, value} = event.target
     setFormFields({...formFields, [name]: value})
+
+    // if (name === 'confirmPassword') {
+    //   dispatch({
+    //     type: 'confirmPassword',
+    //     payload: formFields.confirmPassword === formFields.password,
+    //   })
+    //   return
+    // }
+    if (name === 'email' || name === 'password')
+      dispatch({type: name, payload: value})
   }
-
-  // React.useEffect(() => {
-  //   setFormFields({...formFields})
-
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [formFields.email, formFields.password, formFields.confirmPassword])
 
   React.useEffect(() => {
     dispatch({
@@ -32,19 +36,25 @@ const useRegister = (
     })
   }, [formFields.password, formFields.confirmPassword, state.confirmPassword])
 
-  React.useEffect(() => {
-    dispatch({type: 'email', payload: formFields.email})
-  }, [formFields.email, state.email])
+  // React.useEffect(() => {
+  //   setFormFields({...formFields})
 
-  React.useEffect(() => {
-    dispatch({type: 'password', payload: formFields.password})
-  }, [
-    formFields.password,
-    state.passwordLetter,
-    state.passwordNumber,
-    state.passwordSymbol,
-    state.passwordLength,
-  ])
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [formFields.email, formFields.password, formFields.confirmPassword])
+
+  // React.useEffect(() => {
+  //   dispatch({type: 'email', payload: formFields.email})
+  // }, [formFields.email, state.email])
+
+  // React.useEffect(() => {
+  //   dispatch({type: 'password', payload: formFields.password})
+  // }, [
+  //   formFields.password,
+  //   state.passwordLetter,
+  //   state.passwordNumber,
+  //   state.passwordSymbol,
+  //   state.passwordLength,
+  // ])
 
   return {handleChange, state}
 }
