@@ -19,11 +19,11 @@ const useRegister = (
     setFormFields({...formFields, [name]: value})
   }
 
-  React.useEffect(() => {
-    setFormFields({...formFields})
+  // React.useEffect(() => {
+  //   setFormFields({...formFields})
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [formFields.email, formFields.password, formFields.confirmPassword])
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [formFields.email, formFields.password, formFields.confirmPassword])
 
   React.useEffect(() => {
     dispatch({
