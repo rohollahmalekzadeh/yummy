@@ -1,7 +1,7 @@
 import React from 'react'
-import {Header} from '../components'
-import {UserProvider} from '../contexts/userProvider'
-import {ShoppingCartProvider} from '../contexts/ShoppingCartContext'
+import {Header} from '../src/components'
+import {UserProvider} from '../src/contexts/userProvider'
+import {ShoppingCartProvider} from '../src/contexts/ShoppingCartContext'
 
 import '../styles/globals.css'
 

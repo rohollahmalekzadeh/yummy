@@ -1,7 +1,7 @@
 import React, {FC} from 'react'
 import Link from 'next/link'
 
-import {Button} from '../../index'
+import {Button} from 'src/components'
 import {motion} from 'framer-motion'
 
 type HeaderVertical = {

@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React, {FC, useRef} from 'react'
-import {Button, Price, SingleStar} from 'components'
-import useOnClickOutside from 'hooks/useOnClickOutside'
+import {Button, Price, SingleStar} from 'src/components'
+import useOnClickOutside from 'src/hooks/useOnClickOutside'
 
 type ModalProps = {
   label: string

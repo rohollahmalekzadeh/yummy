@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import {motion} from 'framer-motion'
 import {navigationMobileItemsVariants} from '../framer/navbar-framer-motion'
-import {Button} from 'components'
+import {Button} from 'src/components'
 
 type HeaderVerticalProps = {
   children: string

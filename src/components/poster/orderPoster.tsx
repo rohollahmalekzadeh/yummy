@@ -1,9 +1,9 @@
 import React, {FC, useState} from 'react'
 import Image from 'next/image'
-import {Button, SingleStar, Bookmark, Price} from 'components'
+import {Button, SingleStar, Bookmark, Price} from 'src/components'
 import {MdOutlineFoodBank} from 'react-icons/md'
 import {motion} from 'framer-motion'
-import {useShoppingCart} from 'contexts/ShoppingCartContext'
+import {useShoppingCart} from 'src/contexts/ShoppingCartContext'
 
 type OrderPosterProps = {
   label: string

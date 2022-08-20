@@ -1,4 +1,4 @@
-import Link from '../../node_modules/next/link'
+import Link from 'next/link'
 import {FC} from 'react'
 
 type SuccessMessageProps = {

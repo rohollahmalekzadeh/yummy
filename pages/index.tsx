@@ -7,13 +7,15 @@ import {
   MapComponent,
   RowsContainer,
   OrderPoster,
-} from 'components'
-import {getFoodData} from 'network/food-api/order-list'
+} from 'src/components'
+
+import {getFoodData} from 'src/config-api/food-api/order-list'
+
 import {
   MEAL_QUERY,
   MEAL_SINGLE_ITEM,
   CATEGORY_MENU,
-} from 'network/food-api/config'
+} from 'src/config-api/food-api/config'
 import {GetStaticProps} from 'next'
 
 //! I'm going to change this

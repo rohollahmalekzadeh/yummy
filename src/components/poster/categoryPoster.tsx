@@ -2,7 +2,7 @@ import React, {FC} from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import {motion, Variants} from 'framer-motion'
-import {buttonBase} from 'components/button/button'
+import {buttonBase} from 'src/components/button/button'
 import {BsArrowLeft} from 'react-icons/bs'
 
 const onHover: Variants = {

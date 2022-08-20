@@ -105,19 +105,16 @@ export const item4: Variants = {
 export const mainItem: Variants = {
   hidden: {
     opacity: 0,
-    // y: '-50%',
-    // x: '-50%',
     scale: 0.2,
   },
 
   show: {
     opacity: 1,
-    // y: 0,
-    // x: 0,
     scale: 1.1,
     transition: {
       ease: [0.6, 0.01, -0.05, 0.95],
       duration: 1.2,
+      delay: 0.4,
     },
   },
 }

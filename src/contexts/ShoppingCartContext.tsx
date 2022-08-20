@@ -1,5 +1,5 @@
 import {createContext, useContext, useState, ReactNode} from 'react'
-import {useLocalStorage} from 'hooks/useLocalStorage'
+import {useLocalStorage} from 'src/hooks/useLocalStorage'
 import {CartItem} from 'types/data'
 
 type ShoppingCartProviderProps = {

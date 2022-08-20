@@ -8,7 +8,7 @@ import {
   HeaderHorizontal,
   Button,
   ShoppingCart,
-} from 'components'
+} from 'src/components'
 
 import {motion, useCycle} from 'framer-motion'
 import {
@@ -17,8 +17,8 @@ import {
   navigationMobileVariants,
 } from '../framer/navbar-framer-motion'
 
-import {useUser} from 'contexts/userProvider'
-import {singOutUser} from 'lib/firebase'
+import {useUser} from 'src/contexts/userProvider'
+import {singOutUser} from 'src/lib/firebase'
 
 const Header = ({menuITems}) => {
   const [isOpen, toggleOpen] = useCycle(false, true)

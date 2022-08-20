@@ -3,7 +3,7 @@ import {NextPage} from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import {Input, SuccessMessage, FormLayout, Form, Button} from 'components'
+import {Input, SuccessMessage, FormLayout, Form, Button} from 'src/components'
 
 import {
   signInAuthUserWithEmailAndPassword,

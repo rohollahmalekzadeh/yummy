@@ -3,14 +3,14 @@ import {NextPage} from 'next'
 import Image from 'node_modules/next/image'
 import Link from 'node_modules/next/link'
 
-import {Input, SuccessMessage, FormLayout, Form, Button} from 'components'
-import useRegister from 'logic/authentication/register/useRegister'
+import {Input, SuccessMessage, FormLayout, Form, Button} from 'src/components'
+import useRegister from 'src/hooks/authentication/register/useRegister'
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
 } from 'lib/firebase'
 
-import {defaultFormFields} from 'logic/authentication/register/register.utils'
+import {defaultFormFields} from 'src/hooks/authentication/register/register.utils'
 
 const Register: NextPage = () => {
   const [formFields, setFormFields] = useState(defaultFormFields)

@@ -1,6 +1,6 @@
 import React from 'react'
 import {GetStaticProps, GetStaticPaths} from 'next'
-import {RowsContainer, Row, MapComponent, OrderPoster} from 'components'
+import {RowsContainer, Row, MapComponent, OrderPoster} from 'src/components'
 import {getFoodData} from 'network/food-api/order-list'
 import {ORDER} from 'link'
 import {
