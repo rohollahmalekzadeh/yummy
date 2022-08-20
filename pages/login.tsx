@@ -8,7 +8,7 @@ import {Input, SuccessMessage, FormLayout, Form, Button} from 'src/components'
 import {
   signInAuthUserWithEmailAndPassword,
   signInWithGoogleRedirect,
-} from 'lib/firebase'
+} from 'src/lib/firebase'
 
 const defaultFormFields = {
   email: '',

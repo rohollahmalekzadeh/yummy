@@ -1,16 +1,21 @@
 import React from 'react'
-import {useShoppingCart} from 'src/contexts/ShoppingCartContext'
+import {
+  useShoppingDataCart,
+  useShoppingApiCart,
+} from 'src/contexts/ShoppingCartContext'
 import Head from 'next/head'
 import Image from 'next/image'
 
 const ShoppingCart = () => {
   const {
-    cartItems,
     decreaseCartQuantity,
     increaseCartQuantity,
     getItemQuantity,
     removeFromCart,
-  } = useShoppingCart()
+  } = useShoppingApiCart()
+
+  const {cartItems} = useShoppingDataCart()
+
   return (
     <div>
       <Head>

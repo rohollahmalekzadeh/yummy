@@ -8,7 +8,7 @@ import useRegister from 'src/hooks/authentication/register/useRegister'
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
-} from 'lib/firebase'
+} from 'src/lib/firebase'
 
 import {defaultFormFields} from 'src/hooks/authentication/register/register.utils'
 

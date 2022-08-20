@@ -3,7 +3,10 @@ import Image from 'next/image'
 import {Button, SingleStar, Bookmark, Price} from 'src/components'
 import {MdOutlineFoodBank} from 'react-icons/md'
 import {motion} from 'framer-motion'
-import {useShoppingCart} from 'src/contexts/ShoppingCartContext'
+import {
+  useShoppingApiCart,
+  useShoppingDataCart,
+} from 'src/contexts/ShoppingCartContext'
 
 type OrderPosterProps = {
   label: string
@@ -19,9 +22,10 @@ const OrderPoster: FC<OrderPosterProps> = ({...item}) => {
   const {image, label, price, off} = item
   const [modalIsOpen, setModalIsOpen] = useState(false)
 
-  const {decreaseCartQuantity, increaseCartQuantity, cartItems} =
-    useShoppingCart()
-  const currentlyItem = cartItems.find((item) => item.label === label)
+  const {decreaseCartQuantity, increaseCartQuantity} = useShoppingApiCart()
+  const {cartItems} = useShoppingDataCart()
+
+  const currentItem = cartItems?.find((item) => item.label === label)
 
   return (
     <motion.div
@@ -50,18 +54,24 @@ const OrderPoster: FC<OrderPosterProps> = ({...item}) => {
         <Bookmark />
       </div>
       <div className="flex justify-around p-1">
-        <div className="w-full ">
-          {currentlyItem ? (
+        <div className="w-full">
+          {currentItem ? (
             <span className="flex justify-center gap-6">
               <Button
-                onClick={() => increaseCartQuantity(currentlyItem)}
+                onClick={(e) => {
+                  e.stopPropagation()
+                  increaseCartQuantity(currentItem)
+                }}
                 className="w-7 h-7"
               >
                 +
               </Button>
-              <span className="text-2xl">{currentlyItem.quantity}</span>
+              <span className="text-2xl">{currentItem.quantity}</span>
               <Button
-                onClick={() => decreaseCartQuantity(label)}
+                onClick={(e) => {
+                  e.stopPropagation()
+                  decreaseCartQuantity(label)
+                }}
                 className="w-7 h-7"
               >
                 -
@@ -69,8 +79,11 @@ const OrderPoster: FC<OrderPosterProps> = ({...item}) => {
             </span>
           ) : (
             <Button
-              className="w-11/12 my-auto mb-2"
-              onClick={() => increaseCartQuantity(item)}
+              className="w-11/12 my-auto mb-2 z-10"
+              onClick={(e) => {
+                e.stopPropagation()
+                increaseCartQuantity(item)
+              }}
             >
               <MdOutlineFoodBank className="my-auto mr-1 text-2xl" /> Add to
               cart

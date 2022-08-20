@@ -2,10 +2,11 @@ import React, {useEffect, useRef, useState} from 'react'
 import {MdOutlineShoppingBag} from 'react-icons/md'
 import Link from 'next/link'
 
-import {useShoppingCart} from 'src/contexts/ShoppingCartContext'
+import {useShoppingApiCart} from 'src/contexts/ShoppingCartContext'
 
 const ShoppingCart = () => {
-  const {cartQuantity} = useShoppingCart()
+  const {cartQuantity} = useShoppingApiCart()
+  console.log(cartQuantity)
 
   return (
     <div className="relative flex justify-center items-center">
