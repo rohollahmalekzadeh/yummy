@@ -8,6 +8,7 @@ import {
   HeaderHorizontal,
   Button,
   ShoppingCart,
+  BookmarkCart,
 } from 'src/components'
 
 import {motion, useCycle} from 'framer-motion'
@@ -118,7 +119,7 @@ const Header = ({menuITems}) => {
                         transition: {duration: 0.2},
                       }}
                     >
-                      <Button buttonType="inverted" className="w-28">
+                      <Button buttonType="inverted" className="w-20 md:w-28">
                         Register
                       </Button>
                     </motion.a>
@@ -136,7 +137,7 @@ const Header = ({menuITems}) => {
                 >
                   <Link href="/login">
                     <motion.a>
-                      <Button className="w-28">Login</Button>
+                      <Button className="w-20 md:w-28">Login</Button>
                     </motion.a>
                   </Link>
                 </motion.li>
@@ -145,6 +146,7 @@ const Header = ({menuITems}) => {
             <li>
               <ShoppingCart />
             </li>
+            <li>{/* <BookmarkCart /> */}</li>
           </ul>
         </div>
       </div>

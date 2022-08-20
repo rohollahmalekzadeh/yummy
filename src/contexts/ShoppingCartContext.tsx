@@ -53,8 +53,7 @@ export const ShoppingCartProvider = ({children}: ShoppingCartProviderProps) => {
     const cartQuantity =
       typeof window !== 'undefined'
         ? cartItems.reduce(
-            (quantity, item) =>
-              item?.quantity ? item?.quantity + quantity : 0,
+            (quantity, item) => (item?.quantity ? item.quantity + quantity : 0),
             0,
           )
         : 0

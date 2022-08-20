@@ -6,7 +6,6 @@ import {useShoppingApiCart} from 'src/contexts/ShoppingCartContext'
 
 const ShoppingCart = () => {
   const {cartQuantity} = useShoppingApiCart()
-  console.log(cartQuantity)
 
   return (
     <div className="relative flex justify-center items-center">

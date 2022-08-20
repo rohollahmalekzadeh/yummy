@@ -36,9 +36,13 @@ const OrderPoster: FC<OrderPosterProps> = ({...item}) => {
           duration: 0.3,
         },
       }}
-      className="w-max h-[310px] flex flex-col bg-white rounded-lg cursor-pointer hover:shadow-2xl hover:shadow-amber-800"
+      className=" relative w-max h-[310px] flex flex-col bg-white rounded-lg cursor-pointer hover:shadow-2xl hover:shadow-amber-800"
       onClick={() => setModalIsOpen(true)}
     >
+      <div className="absolute z-10 p-2  flex justify-between w-full">
+        <SingleStar label={label} />
+        <Bookmark bookmarkItem={item} />
+      </div>
       <Image
         src={image}
         width={180}
@@ -51,9 +55,10 @@ const OrderPoster: FC<OrderPosterProps> = ({...item}) => {
         <div className="w-[240px] p-1 pt-0 text-base">
           {label && label.length < 23 ? label : `${label.slice(0, 24)}...`}
         </div>
-        <Bookmark />
+        {/* <Bookmark /> */}
+        {/* <Price price={price} off={off} /> */}
       </div>
-      <div className="flex justify-around p-1">
+      <div className="flex justify-around items-center p-1 w-72 h-fit ">
         <div className="w-full">
           {currentItem ? (
             <span className="flex justify-center gap-6">
@@ -79,18 +84,15 @@ const OrderPoster: FC<OrderPosterProps> = ({...item}) => {
             </span>
           ) : (
             <Button
-              className="w-11/12 my-auto mb-2 z-10"
+              className="w-10/12"
               onClick={(e) => {
                 e.stopPropagation()
                 increaseCartQuantity(item)
               }}
             >
-              <MdOutlineFoodBank className="my-auto mr-1 text-2xl" /> Add to
-              cart
+              <MdOutlineFoodBank className="mr-1 text-xl" /> Add to cart
             </Button>
           )}
-
-          <SingleStar label={label} />
         </div>
         {/*
         //*2 levels props drilling should be ok  

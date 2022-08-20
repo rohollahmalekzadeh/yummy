@@ -24,6 +24,7 @@ const Login: NextPage = () => {
   useEffect(() => {
     setErrorMsg('')
     setFormFields({...formFields})
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formFields.email, formFields.password])
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {

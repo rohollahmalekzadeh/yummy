@@ -19,6 +19,7 @@ export {default as SingleStar} from 'src/components/star/singleStar'
 export {default as Bookmark} from 'src/components/bookmark/bookmark'
 export {default as Price} from 'src/components/price/price'
 export {default as ShoppingCart} from 'src/components/shoppingCart/shoppingCart'
+export {default as BookmarkCart} from 'src/components/bookmarkCart/bookmarkCart'
 export {default as MapComponent} from 'src/components/mapComponent/mapComponent'
 
 export {BUTTON_TYPES_CLASSES} from 'src/components/button/button'

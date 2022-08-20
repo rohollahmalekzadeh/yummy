@@ -72,18 +72,3 @@ export async function getFoodData(
   }
   return typeof query === 'string' ? data[0] : data
 }
-
-//
-//
-//!I'm going to delete this comment at 1400/5/29
-// const menu = Object.values(FOOD_LIST)
-// const diet = fetchFoodData(foodType)
-
-// for (const item of menu) {
-//   const array = await diet(item)
-//   const data = await normalizeDataForPoster(array, {
-//     sliceFrom: 0,
-//     sliceTo: 10,
-//   })
-//   await ArrayData.push({data, title: array?.title})
-// }

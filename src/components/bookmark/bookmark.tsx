@@ -1,21 +1,35 @@
 import React from 'react'
+import {
+  useBookmarkDataCart,
+  useSBookmarkApiCart,
+} from 'src/contexts/BookmarkCartContext'
 import {BsBookmarkHeart, BsBookmarkHeartFill} from 'react-icons/bs'
+import {CartItem} from 'types/data'
 
 type BookmarkProps = {
-  bookmarkFavorite?: boolean
+  bookmarkItem: CartItem
 }
-const Bookmark: React.FC<BookmarkProps> = ({bookmarkFavorite = false}) => {
-  const [favorite, setFavorite] = React.useState(bookmarkFavorite)
+const Bookmark: React.FC<BookmarkProps> = ({bookmarkItem}) => {
+  const {bookmarkItems} = useBookmarkDataCart()
+  const {addToBookmark} = useSBookmarkApiCart()
+
+  const existingBookItem = bookmarkItems.find(
+    (item) => item.label === bookmarkItem.label && bookmarkItem,
+  )
 
   return (
     <div
-      className="cursor-pointer my-auto mr-1 text-2xl "
+      className="cursor-pointer my-auto mr-1 text-2xl bg-white py-1 rounded-lg "
       onClick={(e) => {
         e.stopPropagation()
-        setFavorite((prev) => !prev)
+        addToBookmark(bookmarkItem)
       }}
     >
-      {favorite ? <BsBookmarkHeartFill /> : <BsBookmarkHeart />}
+      {existingBookItem ? (
+        <BsBookmarkHeartFill color="red" />
+      ) : (
+        <BsBookmarkHeart color="black" />
+      )}
     </div>
   )
 }

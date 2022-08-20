@@ -1,8 +1,8 @@
 import React from 'react'
 import {GetStaticProps, GetStaticPaths} from 'next'
 import {RowsContainer, Row, MapComponent, OrderPoster} from 'src/components'
-import {getFoodData} from 'network/food-api/order-list'
-import {ORDER} from 'link'
+import {getFoodData} from 'src/config-api/food-api/order-list'
+import {ORDER} from 'src/link'
 import {
   DIET_LIST,
   FOOD_LIST,
@@ -10,7 +10,7 @@ import {
   DIET_QUERY,
   FOOD_QUERY,
   MEAL_QUERY,
-} from 'network/food-api/config'
+} from 'src/config-api/food-api/config'
 
 export const getStaticProps: GetStaticProps = async (context) => {
   let data = []
@@ -26,7 +26,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     data = await getFoodData(foodType, FOOD_LIST, {sliceFrom: 0, sliceTo: 8})
   }
 
-  //*Don't change revalidate time, because prices are fake
+  //*Don't change revalidate time, because all prices are fake
   return {
     props: {
       data,
