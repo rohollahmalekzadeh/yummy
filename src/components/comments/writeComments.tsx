@@ -7,13 +7,17 @@ import {
   serverTimestamp,
   setDoc,
 } from 'firebase/firestore'
+import FiveStart from '../star/fiveStart'
+
 import {Button} from 'src/components'
-import {db, addComments} from 'src/lib/firebase'
+import {addComments} from 'src/lib/firebase'
 import {useUser} from 'src/contexts/userProvider'
 
 const WriteComments = ({label}: {label: any}) => {
   const [comment, setComment] = useState('')
   const {currentUser} = useUser()
+
+  const [rating, setRatingValue] = useState(0)
 
   async function sendComment(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -41,7 +45,10 @@ const WriteComments = ({label}: {label: any}) => {
           value={comment}
           onChange={(e) => setComment(e.target.value)}
         />
-        <Button type="submit">Send comment</Button>
+        <div className="flex flex-col items-end p-3 gap-3">
+          <FiveStart rating={rating} setRatingValue={setRatingValue} />
+          <Button type="submit">Send comment</Button>
+        </div>
       </form>
     </div>
   )
