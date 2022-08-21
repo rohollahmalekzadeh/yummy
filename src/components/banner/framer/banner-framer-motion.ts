@@ -113,7 +113,7 @@ export const mainItem: Variants = {
     scale: 1.1,
     transition: {
       ease: [0.6, 0.01, -0.05, 0.95],
-      duration: 1.2,
+      duration: 2.4,
     },
   },
 }

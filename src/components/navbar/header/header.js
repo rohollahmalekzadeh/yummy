@@ -146,7 +146,9 @@ const Header = ({menuITems}) => {
             <li>
               <ShoppingCart />
             </li>
-            <li>{/* <BookmarkCart /> */}</li>
+            <li>
+              <BookmarkCart />
+            </li>
           </ul>
         </div>
       </div>

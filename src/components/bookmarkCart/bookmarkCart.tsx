@@ -8,7 +8,7 @@ const BookmarkCart = () => {
   const {bookmarkQuantity} = useSBookmarkApiCart()
 
   return (
-    <div className="relative flex justify-center items-center">
+    <div className="relative">
       <Link href="/shopping-cart">
         <a className="relative">
           <FaRegBookmark className="h-8 w-8" />

@@ -2,6 +2,8 @@ import Image from 'next/image'
 import React, {FC, useRef} from 'react'
 import {Button, Price, SingleStar} from 'src/components'
 import useOnClickOutside from 'src/hooks/useOnClickOutside'
+import Comments from '../comments/comments'
+import WriteComments from '../comments/writeComments'
 
 type ModalProps = {
   label: string
@@ -29,12 +31,12 @@ const Modal: FC<ModalProps> = ({
   })
 
   return (
-    <div className="absolute w-screen h-screen top-0 left-0 bg-black bg-opacity-40 z-50 ">
+    <div className="absolute w-screen h-screen top-0 left-0 bg-black bg-opacity-40 z-50 flex items-center justify-center">
       <div
-        className="h-[750px] w-[350px] md:w-[700px] m-auto mt-10 border-4 rounded-lg border-white bg-orange-100 overflow-y-auto"
+        className=" h-5/6 w-2/3 md:w-[700px] border-4 rounded-lg border-white bg-orange-100 overflow-y-auto overflow-x-hidden"
         ref={modalRef}
       >
-        <div className="flex flex-col">
+        <div className="flex flex-col mb-10">
           <div className=""></div>
           <button
             className="p-2 cursor-pointer w-8 self-end"
@@ -50,7 +52,7 @@ const Modal: FC<ModalProps> = ({
               height={300}
               className="rounded-lg"
             />
-            <div className="flex  flex-col md:justify-between md:w-6/12 md:h-[300px] md:py-3 ">
+            <div className="flex flex-col md:justify-between md:w-6/12 md:h-[300px] md:py-3 ">
               <div>
                 <div className="flex justify-between items-center mb-3">
                   <div className="text-lg ">{label}</div>
@@ -69,8 +71,24 @@ const Modal: FC<ModalProps> = ({
             </div>
           </div>
         </div>
+
+        <div className="w-full p-5">
+          <WriteComments />
+        </div>
+
+        <div className="">
+          <h3 className="mb-4 text-xl px-4 pt-4  ">Users thought:</h3>
+
+          <Comments
+            date="date"
+            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi
+            voluptate atque corporis officia eaque quis, voluptatem eveniet
+            est libero debitis accusamus sunt mollitia dolor doloremque fuga
+            facere tempora odit non."
+            name="rohol"
+          />
+        </div>
       </div>
-      <div className="comments"></div>
     </div>
   )
 }

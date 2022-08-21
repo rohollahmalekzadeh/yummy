@@ -64,11 +64,11 @@ export async function getFoodData(
 
   for (const menuItem of menu) {
     const foodList = await FoodType(menuItem)
-    const normalizedData = await normalizeDataForPoster(foodList, {
+    const normalizedData = normalizeDataForPoster(foodList, {
       sliceFrom,
       sliceTo,
     })
-    await data.push({data: normalizedData, title: foodList?.title})
+    data.push({data: normalizedData, title: foodList?.title})
   }
   return typeof query === 'string' ? data[0] : data
 }
