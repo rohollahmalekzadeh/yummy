@@ -21,8 +21,6 @@ export {default as Price} from 'src/components/price/price'
 export {default as ShoppingCart} from 'src/components/shoppingCart/shoppingCart'
 export {default as BookmarkCart} from 'src/components/bookmarkCart/bookmarkCart'
 export {default as MapComponent} from 'src/components/mapComponent/mapComponent'
-export {default as Comments} from 'src/components/comments/comments'
-export {default as WriteComments} from 'src/components/comments/writeComments'
 
 export {BUTTON_TYPES_CLASSES} from 'src/components/button/button'
 

@@ -52,7 +52,7 @@ const Modal: FC<ModalProps> = ({
               height={300}
               className="rounded-lg"
             />
-            <div className="flex flex-col md:justify-between md:w-6/12 md:h-[300px] md:py-3 ">
+            <div className="flex flex-col md:justify-between md:w-6/12 md:h-[300px] md:py-3">
               <div>
                 <div className="flex justify-between items-center mb-3">
                   <div className="text-lg ">{label}</div>
@@ -73,7 +73,7 @@ const Modal: FC<ModalProps> = ({
         </div>
 
         <div className="w-full p-5">
-          <WriteComments />
+          <WriteComments label={label} />
         </div>
 
         <div className="">

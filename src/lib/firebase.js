@@ -1,6 +1,15 @@
 import {initializeApp, getApp, getApps} from 'firebase/app'
 
-import {getFirestore, doc, setDoc, getDoc} from 'firebase/firestore'
+import {
+  getFirestore,
+  doc,
+  setDoc,
+  getDoc,
+  collection,
+  addDoc,
+  onSnapshot,
+  serverTimestamp,
+} from 'firebase/firestore'
 import {
   getAuth,
   GoogleAuthProvider,
@@ -74,3 +83,11 @@ export const onAuthStateChangedListener = async (callback) => {
 }
 
 export const singOutUser = async () => await signOut(auth)
+
+export const addComments = async (data, path, label, ...pathSegments) => {
+  try {
+    await addDoc(collection(db, path, label, ...pathSegments), data)
+  } catch (e) {
+    console.log(e)
+  }
+}
