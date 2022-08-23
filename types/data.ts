@@ -5,3 +5,8 @@ export type CartItem = {
   quantity?: number
   off?: number
 }
+
+export type CartItems = {
+  data: CartItem[]
+  title?: string
+}

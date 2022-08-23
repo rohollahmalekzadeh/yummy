@@ -1,4 +1,5 @@
 import {normalizeDataForPoster} from 'utils/utils'
+import {CartItem, CartItems} from 'types/data'
 import {
   FOOD_LIST,
   FOOD_QUERY,
@@ -13,13 +14,13 @@ import {
 } from './config'
 
 export function fetchFoodData(type: typeof MEAL_QUERY): {
-  (query: typeof MEAL_LIST | MEAL_SINGLE_ITEM): Promise<any>
+  (query: typeof MEAL_LIST | MEAL_SINGLE_ITEM): Promise<CartItems>
 }
 export function fetchFoodData(type: typeof FOOD_QUERY): {
-  (query: typeof FOOD_LIST | FOOD_SINGLE_ITEM): Promise<any>
+  (query: typeof FOOD_LIST | FOOD_SINGLE_ITEM): Promise<CartItems>
 }
 export function fetchFoodData(type: typeof DIET_QUERY): {
-  (query: typeof DIET_LIST | DIET_SINGLE_ITEM): Promise<any>
+  (query: typeof DIET_LIST | DIET_SINGLE_ITEM): Promise<CartItems>
 }
 
 export function fetchFoodData(type: any) {
@@ -41,24 +42,24 @@ export async function getFoodData(
   type: typeof DIET_QUERY,
   query: typeof DIET_LIST | DIET_SINGLE_ITEM,
   {sliceFrom, sliceTo}: {sliceFrom: number; sliceTo: number},
-): Promise<any>
+): Promise<CartItems>
 export async function getFoodData(
   type: typeof FOOD_QUERY,
   query: typeof FOOD_LIST | FOOD_SINGLE_ITEM,
   {sliceFrom, sliceTo}: {sliceFrom: number; sliceTo: number},
-): Promise<any>
+): Promise<CartItems>
 export async function getFoodData(
   type: typeof MEAL_QUERY,
   query: typeof MEAL_LIST | MEAL_SINGLE_ITEM,
   {sliceFrom, sliceTo}: {sliceFrom: number; sliceTo: number},
-): Promise<any>
+): Promise<CartItems>
 
 export async function getFoodData(
   type: any,
   query: any,
   {sliceFrom = 0, sliceTo = 2},
 ) {
-  let data: any = []
+  let data: CartItems[] = []
   const menu: any[] = typeof query === 'string' ? [query] : Object.values(query)
   const FoodType = fetchFoodData(type)
 
@@ -68,7 +69,11 @@ export async function getFoodData(
       sliceFrom,
       sliceTo,
     })
-    data.push({data: normalizedData, title: foodList?.title})
+    data.push({
+      data: normalizedData,
+      title: foodList?.title,
+    })
   }
+
   return typeof query === 'string' ? data[0] : data
 }

@@ -12,6 +12,7 @@ type BookmarkContext = {
   children: ReactNode
 }
 
+//*I'm using label except id because food api haven't id
 type State = {bookmarkItems: CartItem[]}
 type API = {
   addToBookmark: (cartItem: CartItem) => void

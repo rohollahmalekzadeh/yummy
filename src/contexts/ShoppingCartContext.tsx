@@ -13,7 +13,7 @@ type ShoppingCartProviderProps = {
   children: ReactNode
 }
 
-//*I'm using label except for id because food api haven't id
+//*I'm using label except id because food api haven't id
 type State = {cartItems: CartItem[]}
 type API = {
   getItemQuantity: (labe: string) => number
@@ -38,7 +38,6 @@ export const useShoppingDataCart = () => {
   return useContext(ShoppingCartDataContext)
 }
 
-//TODO refactor
 export const ShoppingCartProvider = ({children}: ShoppingCartProviderProps) => {
   //! there is a bug
   //! Hydration failed because the initial UI does not match what was rendered on the server.

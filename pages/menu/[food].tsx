@@ -11,9 +11,10 @@ import {
   FOOD_QUERY,
   MEAL_QUERY,
 } from 'src/config-api/food-api/config'
+import {CartItem, CartItems} from 'types/data'
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  let data = []
+  let data = {} as CartItems
 
   const {params} = context
   const foodType = params?.food
@@ -47,6 +48,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 const Food = ({data}: any) => {
+  console.log(data)
   return (
     <div>
       {data.map((item: any) => (
