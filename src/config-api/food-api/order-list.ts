@@ -62,18 +62,24 @@ export async function getFoodData(
   let data: CartItems[] = []
   const menu: any[] = typeof query === 'string' ? [query] : Object.values(query)
   const FoodType = fetchFoodData(type)
+  let foodList: any = []
 
   for (const menuItem of menu) {
-    const foodList = await FoodType(menuItem)
-    const normalizedData = normalizeDataForPoster(foodList, {
+    foodList.push(FoodType(menuItem))
+  }
+
+  const foodLists: CartItems[] = await Promise.all(foodList)
+
+  for (const food of foodLists) {
+    const normalizedData = normalizeDataForPoster(food, {
       sliceFrom,
       sliceTo,
     })
+
     data.push({
       data: normalizedData,
-      title: foodList?.title,
+      title: food?.title,
     })
   }
-
   return typeof query === 'string' ? data[0] : data
 }

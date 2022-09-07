@@ -10,7 +10,6 @@ import {
 } from 'src/components'
 import AddToCartButton from 'src/components/addToCartButton/addToCartButton'
 import Price from 'src/components/price/price'
-
 import {getFoodData} from 'src/config-api/food-api/order-list'
 
 import {
@@ -44,6 +43,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 }
 
 const Home = ({highProtein}: any) => {
+  console.log(highProtein)
   return (
     <div>
       <Head>
@@ -75,7 +75,6 @@ const Home = ({highProtein}: any) => {
               : ``
           }`}
         >
-          {/* <MapComponent Component={OrderPoster} data={highProtein.data} /> */}
           {highProtein.data.map((item: any) => (
             <OrderPoster
               key={item.label}
