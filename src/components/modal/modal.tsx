@@ -1,6 +1,10 @@
 import Image from 'next/image'
 import React, {FC, useRef} from 'react'
-import {Button, Price, SingleStar} from 'src/components'
+
+import SingleStar from 'src/components/star/singleStar'
+import AddToCartButton from '../addToCartButton/addToCartButton'
+import Price from 'src/components/price/price'
+
 import useOnClickOutside from 'src/hooks/useOnClickOutside'
 import Comments from '../comments/comments'
 import WriteComments from '../comments/writeComments'
@@ -12,13 +16,8 @@ type ModalProps = {
   off?: number
   setModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
-const Modal: FC<ModalProps> = ({
-  setModalIsOpen,
-  label,
-  image,
-  price,
-  off = 0,
-}) => {
+const Modal: FC<ModalProps> = ({setModalIsOpen, ...item}) => {
+  const {label, image, price, off = 0} = item
   const modalRef = useRef<HTMLDivElement>(null)
 
   const handleModalClose = (event?: React.MouseEvent<HTMLButtonElement>) => {
@@ -65,7 +64,7 @@ const Modal: FC<ModalProps> = ({
                 </div>
               </div>
               <div className="mt-4  w-11/12 p-1 text-md  flex items-center justify-between">
-                <Button className="w-36 self-end ">Add to cart</Button>
+                <AddToCartButton item={item} />
                 <Price price={price} off={off}></Price>
               </div>
             </div>
@@ -78,7 +77,6 @@ const Modal: FC<ModalProps> = ({
 
         <div className="">
           <h3 className="mb-4 text-xl px-4 pt-4  ">Users thought:</h3>
-
           <Comments
             date="date"
             description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi

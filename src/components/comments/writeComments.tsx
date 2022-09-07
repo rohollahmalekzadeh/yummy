@@ -9,7 +9,10 @@ import {
 } from 'firebase/firestore'
 import FiveStart from '../star/fiveStart'
 
-import {Button} from 'src/components'
+import Button from 'src/components/ui/button'
+import TextArea from 'src/components/ui/textArea'
+import Form from '../ui/form'
+
 import {addComments} from 'src/lib/firebase'
 import {useUser} from 'src/contexts/userProvider'
 
@@ -36,22 +39,22 @@ const WriteComments = ({label}: {label: any}) => {
   }
 
   return (
-    <div>
-      <form onSubmit={sendComment}>
-        <textarea
-          className="w-full h-40 overflow-auto resize-none p-3 focus:none rounded-lg focus:outline-orange-400 focus:outline-double "
-          placeholder="You'r thought "
-          aria-label="You'r thought "
-          required
-          value={comment}
-          onChange={(e) => setComment(e.target.value)}
-        />
-        <div className="flex flex-col items-end p-3 gap-3">
-          <FiveStart rating={rating} setRatingValue={setRatingValue} />
-          <Button type="submit">Send comment</Button>
-        </div>
-      </form>
-    </div>
+    <Form onSubmit={sendComment}>
+      <TextArea
+        placeholder="You'r thought"
+        aria-label="You'r thought"
+        required
+        value={comment}
+        onChange={(e) => setComment(e.target.value)}
+      />
+
+      <div className="flex flex-col items-end p-3 gap-3">
+        <FiveStart rating={rating} setRatingValue={setRatingValue} />
+        <Button type="submit" className="w-52">
+          Send comment
+        </Button>
+      </div>
+    </Form>
   )
 }
 

@@ -1,5 +1,5 @@
 import React, {FC} from 'react'
-import Button from '../button/button'
+import Button from '../ui/button'
 import {
   useShoppingApiCart,
   useShoppingDataCart,
@@ -25,7 +25,9 @@ const AddToCartButton: FC<any> = ({item}) => {
           >
             -
           </Button>
-          <span className="text-2xl">{currentItem.quantity}</span>
+          <span className="text-2xl w-5 flex justify-center items-center">
+            {currentItem.quantity}
+          </span>
           <Button
             onClick={(e) => {
               e.stopPropagation()

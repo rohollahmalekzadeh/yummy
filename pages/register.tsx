@@ -3,7 +3,8 @@ import {NextPage} from 'next'
 import Image from 'node_modules/next/image'
 import Link from 'node_modules/next/link'
 
-import {Input, SuccessMessage, FormLayout, Form, Button} from 'src/components'
+import {SuccessMessage, FormLayout, Form, Button} from 'src/components'
+import InputAuthentication from 'src/components/inputAuthentication/inputAuthentication'
 import useRegister from 'src/hooks/authentication/register/useRegister'
 import {
   createAuthUserWithEmailAndPassword,
@@ -80,7 +81,7 @@ const Register: NextPage = () => {
               <h3 className="mx-auto p-5 text-red-500">{errorMsg}</h3>
             )}
             <Form onSubmit={handleSubmit}>
-              <Input
+              <InputAuthentication
                 label="email"
                 required
                 value={formFields.email}
@@ -89,11 +90,11 @@ const Register: NextPage = () => {
                 type="text"
                 autoComplete="off"
                 onChange={handleChange}
-                errorMessage={'It should be a valid email address!'}
-                errorCheck={state.email}
+                errorMessage={['It should be a valid email address!']}
+                errorCheck={[state.email]}
               />
 
-              <Input
+              <InputAuthentication
                 label="password"
                 required
                 value={formFields.password}
@@ -115,7 +116,7 @@ const Register: NextPage = () => {
                 ]}
               />
 
-              <Input
+              <InputAuthentication
                 label="confirm password"
                 value={formFields.confirmPassword}
                 name="confirmPassword"
@@ -123,11 +124,15 @@ const Register: NextPage = () => {
                 id="confirm password"
                 type="password"
                 onChange={handleChange}
-                errorMessage={"Passwords don't match!"}
-                errorCheck={state.confirmPassword}
+                errorMessage={["Passwords don't match!"]}
+                errorCheck={[state.confirmPassword]}
               />
 
-              <Button type="submit" buttonType="inverted" className="mx-auto">
+              <Button
+                type="submit"
+                buttonType="inverted"
+                className="mx-auto w-60"
+              >
                 Register
               </Button>
             </Form>
@@ -137,7 +142,7 @@ const Register: NextPage = () => {
 
               <Link href="/login">
                 <a>
-                  <Button>Login</Button>
+                  <Button className="w-60">Login</Button>
                 </a>
               </Link>
             </div>

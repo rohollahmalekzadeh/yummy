@@ -12,7 +12,7 @@ type HeaderVerticalProps = {
 const HeaderVertical: FC<HeaderVerticalProps> = ({children}) => {
   return (
     <motion.li
-      className="mb-6 border-2 even:border-orange-300 odd:border-amber-300 rounded-md hover:border-transparent"
+      className="mb-6 border-2 even:border-orange-300 odd:border-amber-300 rounded-lg hover:border-transparent"
       variants={navigationMobileItemsVariants}
       whileTap={{
         scale: 0.9,

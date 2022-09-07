@@ -3,7 +3,8 @@ import {NextPage} from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import {Input, SuccessMessage, FormLayout, Form, Button} from 'src/components'
+import {SuccessMessage, FormLayout, Form, Button} from 'src/components'
+import InputAuthentication from 'src/components/inputAuthentication/inputAuthentication'
 
 import {
   signInAuthUserWithEmailAndPassword,
@@ -77,7 +78,7 @@ const Login: NextPage = () => {
             )}
 
             <Form onSubmit={submitHandler}>
-              <Input
+              <InputAuthentication
                 label="email"
                 required
                 value={formFields.email}
@@ -88,7 +89,7 @@ const Login: NextPage = () => {
                 onChange={handleChange}
               />
 
-              <Input
+              <InputAuthentication
                 label="password"
                 required
                 value={formFields.password}
@@ -99,11 +100,14 @@ const Login: NextPage = () => {
               />
 
               <div className="flex flex-col justify-around gap-4 items-center">
-                <Button type="submit">Login</Button>
+                <Button type="submit" className="w-60">
+                  Login
+                </Button>
                 <Button
                   type="button"
                   buttonType="google"
                   onClick={signInWithGoogleRedirect}
+                  className="w-60"
                 >
                   Login with Google
                 </Button>

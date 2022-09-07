@@ -22,8 +22,8 @@ export const DIET_QUERY = 'diet' as const
 export const DIET_LIST = {
   HIGH_FIBER: 'high-fiber',
   // HIGH_PROTEIN: 'high-protein',
-  // HIGH_CARB : 'low-carb',
-  // LOW_FAT : 'low-fat',
+  // HIGH_CARB: 'low-carb',
+  // LOW_FAT: 'low-fat',
   // BALANCED : 'Balanced',
   // LOW_SODIUM : 'low-sodium',
 }
@@ -31,7 +31,7 @@ export const DIET_LIST = {
 export const MEAL_QUERY = 'mealType' as const
 export const MEAL_LIST = {
   BREAKFAST: 'breakfast',
-  // BRUNCH: 'brunch',
+  BRUNCH: 'brunch',
   // LUNCH_DINNER : 'lunch/dinner',
   // SNACK : 'snack',
 }
@@ -39,7 +39,7 @@ export const MEAL_LIST = {
 export const FOOD_QUERY = 'q' as const
 export const FOOD_LIST = {
   keKEBAB: 'kebab',
-  // PIZZA: 'pizza',
+  PIZZA: 'pizza',
   // JUICE : 'juice',
   // SALAD : 'salad',
 }

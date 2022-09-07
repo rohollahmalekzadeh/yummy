@@ -1,15 +1,15 @@
 import React from 'react'
 import Head from 'next/head'
-import {
-  Banner,
-  CategoryPoster,
-  Row,
-  MapComponent,
-  RowsContainer,
-  OrderPoster,
-} from 'src/components'
+
+import Banner from 'src/components/banner/banner'
+import Row from 'src/components/ui/row'
+import MapComponent from 'src/components/mapComponent/mapComponent'
+import RowsContainer from 'src/components/ui/rowsContainer'
+import OrderPoster from 'src/components/poster/orderPoster'
+import CategoryPoster from 'src/components/poster/categoryPoster'
 import AddToCartButton from 'src/components/addToCartButton/addToCartButton'
 import Price from 'src/components/price/price'
+
 import {getFoodData} from 'src/config-api/food-api/order-list'
 
 import {

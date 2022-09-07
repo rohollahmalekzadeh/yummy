@@ -1,6 +1,12 @@
 import React from 'react'
 import {GetStaticProps, GetStaticPaths} from 'next'
-import {RowsContainer, Row, MapComponent, OrderPoster} from 'src/components'
+
+import Row from 'src/components/ui/row'
+import OrderPoster from 'src/components/poster/orderPoster'
+import RowsContainer from 'src/components/ui/rowsContainer'
+import AddToCartButton from 'src/components/addToCartButton/addToCartButton'
+import Price from 'src/components/price/price'
+
 import {getFoodData} from 'src/config-api/food-api/order-list'
 import {ORDER} from 'src/link'
 import {
@@ -11,7 +17,8 @@ import {
   FOOD_QUERY,
   MEAL_QUERY,
 } from 'src/config-api/food-api/config'
-import {CartItem, CartItems} from 'types/data'
+
+import {CartItems} from 'types/data'
 
 export const getStaticProps: GetStaticProps = async (context) => {
   let data = {} as CartItems
@@ -28,6 +35,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 
   //*Don't change revalidate time, because all prices are fake
+  //*Don't change rendering page to CSR, because all prices are fake
   return {
     props: {
       data,
@@ -48,13 +56,19 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 const Food = ({data}: any) => {
-  console.log(data)
   return (
     <div>
       {data.map((item: any) => (
         <RowsContainer key={item.title}>
           <Row title={item.title}>
-            <MapComponent Component={OrderPoster} data={item.data} />
+            {item.data.map((item: any) => (
+              <OrderPoster
+                key={item.label}
+                {...item}
+                AddToCartComponent={<AddToCartButton item={item} />}
+                PriceComponent={<Price price={item.price} off={item.off} />}
+              />
+            ))}
           </Row>
         </RowsContainer>
       ))}
