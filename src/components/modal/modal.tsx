@@ -5,7 +5,7 @@ import SingleStar from 'src/components/star/singleStar'
 import AddToCartButton from '../addToCartButton/addToCartButton'
 import Price from 'src/components/price/price'
 
-import useOnClickOutside from 'src/hooks/useOnClickOutside'
+import useOnClickOutside from 'src/utils/hooks/useOnClickOutside'
 import Comments from '../comments/comments'
 import WriteComments from '../comments/writeComments'
 
