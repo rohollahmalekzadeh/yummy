@@ -1,7 +1,7 @@
-import React, {FC} from 'react'
+import React, {ComponentType, FC} from 'react'
 
 type MapComponentProps = {
-  Component: FC<any>
+  Component: ComponentType<any>
   data: any[]
 }
 

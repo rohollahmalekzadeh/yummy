@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react'
+import React from 'react'
 import {MdOutlineShoppingBag} from 'react-icons/md'
 import Link from 'next/link'
 

@@ -1,31 +1,28 @@
-import React, {FC, useState} from 'react'
+import React, {ComponentType, FC, ReactElement, useState} from 'react'
 import Image from 'next/image'
-import {Button, SingleStar, Bookmark, Price} from 'src/components'
-import {MdOutlineFoodBank} from 'react-icons/md'
+import {SingleStar, Bookmark, Price} from 'src/components'
 import {motion} from 'framer-motion'
-import {
-  useShoppingApiCart,
-  useShoppingDataCart,
-} from 'src/contexts/ShoppingCartContext'
+import AddToCartButton from 'src/components/addToCartButton/addToCartButton'
 
 type OrderPosterProps = {
   label: string
   image: string
   price: number
   off?: number
+  PriceComponent: ReactElement
+  AddToCartComponent: ReactElement
 }
 
 const Modal = React.lazy(() => import('../modal/modal'))
 const Portal = React.lazy(() => import('../portal/portal'))
 
-const OrderPoster: FC<OrderPosterProps> = ({...item}) => {
+const OrderPoster: FC<OrderPosterProps> = ({
+  PriceComponent,
+  AddToCartComponent,
+  ...item
+}) => {
   const {image, label, price, off} = item
   const [modalIsOpen, setModalIsOpen] = useState(false)
-
-  const {decreaseCartQuantity, increaseCartQuantity} = useShoppingApiCart()
-  const {cartItems} = useShoppingDataCart()
-
-  const currentItem = cartItems?.find((item) => item.label === label)
 
   return (
     <motion.div
@@ -39,7 +36,7 @@ const OrderPoster: FC<OrderPosterProps> = ({...item}) => {
       className=" relative w-max h-[310px] flex flex-col bg-white rounded-lg cursor-pointer hover:shadow-2xl hover:shadow-amber-800"
       onClick={() => setModalIsOpen(true)}
     >
-      <div className="absolute z-10 p-2  flex justify-between w-full">
+      <div className="absolute z-10 p-2 flex justify-between w-full">
         <SingleStar label={label} />
         <Bookmark bookmarkItem={item} />
       </div>
@@ -55,50 +52,12 @@ const OrderPoster: FC<OrderPosterProps> = ({...item}) => {
         <div className="w-[240px] p-1 pt-0 text-base">
           {label && label.length < 23 ? label : `${label.slice(0, 24)}...`}
         </div>
-        {/* <Bookmark /> */}
-        {/* <Price price={price} off={off} /> */}
       </div>
-      <div className="flex justify-around items-center p-1 w-72 h-fit ">
-        <div className="w-full">
-          {currentItem ? (
-            <span className="flex justify-center gap-6">
-              <Button
-                onClick={(e) => {
-                  e.stopPropagation()
-                  increaseCartQuantity(currentItem)
-                }}
-                className="w-7 h-7"
-              >
-                +
-              </Button>
-              <span className="text-2xl">{currentItem.quantity}</span>
-              <Button
-                onClick={(e) => {
-                  e.stopPropagation()
-                  decreaseCartQuantity(label)
-                }}
-                className="w-7 h-7"
-              >
-                -
-              </Button>
-            </span>
-          ) : (
-            <Button
-              className="w-10/12"
-              onClick={(e) => {
-                e.stopPropagation()
-                increaseCartQuantity(item)
-              }}
-            >
-              <MdOutlineFoodBank className="mr-1 text-xl" /> Add to cart
-            </Button>
-          )}
-        </div>
-        {/*
-        //*2 levels props drilling should be ok  
-        //! Do not change it something like compound component or other patterns . let it be clean!
-         */}
-        <Price price={price} off={off} />
+      <div className="flex justify-around items-start p-1 w-72 h-fit">
+        {/* <AddToCartButton item={item} label={label} /> */}
+        {/* <Price price={price} off={off} /> */}
+        {AddToCartComponent}
+        {PriceComponent}
       </div>
       {/* 
         //TODO: find loading fallback

@@ -1,5 +1,5 @@
 import {normalizeDataForPoster} from 'utils/utils'
-import {CartItem, CartItems} from 'types/data'
+import {CartItems} from 'types/data'
 import {
   FOOD_LIST,
   FOOD_QUERY,

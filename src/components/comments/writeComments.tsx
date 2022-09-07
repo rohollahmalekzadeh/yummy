@@ -27,6 +27,7 @@ const WriteComments = ({label}: {label: any}) => {
         comment: comment,
         name: 'rohol',
         date: serverTimestamp(),
+        rate: rating,
       },
       'foods',
       label,

@@ -5,6 +5,7 @@ import React, {
   ReactNode,
   useMemo,
 } from 'react'
+
 import {useLocalStorage} from 'src/hooks/useLocalStorage'
 
 import {CartItem} from 'types/data'
@@ -42,11 +43,11 @@ export const ShoppingCartProvider = ({children}: ShoppingCartProviderProps) => {
   //! there is a bug
   //! Hydration failed because the initial UI does not match what was rendered on the server.
   //!There was an error while hydrating. Because the error happened outside of a Suspense boundary, the entire root will switch to client rendering.
-  const [cartItems, setCartItems] = useLocalStorage<CartItem[]>(
-    'shopping-cart',
-    [],
-  )
-  // const [cartItems, setCartItems] = useState<CartItem[]>([])
+  // const [cartItems, setCartItems] = useLocalStorage<CartItem[]>(
+  //   'shopping-cart',
+  //   [],
+  // )
+  const [cartItems, setCartItems] = useState<CartItem[]>([])
 
   const api = useMemo(() => {
     const cartQuantity =
