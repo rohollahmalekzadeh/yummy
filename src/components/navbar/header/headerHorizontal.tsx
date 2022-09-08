@@ -1,7 +1,7 @@
 import React, {FC} from 'react'
 import Link from 'next/link'
 
-import {Button} from 'src/components'
+import Button from 'src/components/ui/button'
 import {motion} from 'framer-motion'
 
 type HeaderVertical = {
@@ -22,10 +22,7 @@ const HeaderHorizontal: FC<HeaderVertical> = ({children}) => {
     >
       <Link href={`/${children}`}>
         <motion.a>
-          <Button
-            buttonType="inverted"
-            className="text-base xl:w-28 xl:text-lg lg:w-24 lg:text-base"
-          >
+          <Button buttonType="inverted" className="md:text-base md:w-20">
             {children}
           </Button>
         </motion.a>

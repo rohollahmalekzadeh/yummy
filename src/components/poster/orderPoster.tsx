@@ -1,24 +1,24 @@
-import React, {ComponentType, FC, ReactElement, useState} from 'react'
+import React, {FC, ReactElement, useState} from 'react'
 import Image from 'next/image'
-import {SingleStar, Bookmark, Price} from 'src/components'
+import SingleStar from 'src/components/star/singleStar'
+import Bookmark from 'src/components/bookmark/bookmark'
 import {motion} from 'framer-motion'
-import AddToCartButton from 'src/components/addToCartButton/addToCartButton'
 
 type OrderPosterProps = {
   label: string
   image: string
   price: number
   off?: number
-  PriceComponent: ReactElement
-  AddToCartComponent: ReactElement
+  priceComponent: ReactElement
+  addToCartComponent: ReactElement
 }
 
 const Modal = React.lazy(() => import('../modal/modal'))
 const Portal = React.lazy(() => import('../portal/portal'))
 
 const OrderPoster: FC<OrderPosterProps> = ({
-  PriceComponent,
-  AddToCartComponent,
+  priceComponent,
+  addToCartComponent,
   ...item
 }) => {
   const {image, label, price, off} = item
@@ -56,8 +56,8 @@ const OrderPoster: FC<OrderPosterProps> = ({
       <div className="flex justify-around items-start p-1 w-72 h-fit">
         {/* <AddToCartButton item={item} label={label} /> */}
         {/* <Price price={price} off={off} /> */}
-        {AddToCartComponent}
-        {PriceComponent}
+        {addToCartComponent}
+        {priceComponent}
       </div>
       {/* 
         //TODO: find loading fallback

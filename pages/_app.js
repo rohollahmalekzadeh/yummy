@@ -1,5 +1,5 @@
 import React from 'react'
-import {Header} from '../src/components'
+import Header from '../src/components/navbar/header/header'
 import {UserProvider} from '../src/contexts/userProvider'
 import {ShoppingCartProvider} from '../src/utils/hocs/shoppingCartProvider'
 import {BookmarkProvider} from '../src/utils/hocs/bookmarkProvider'

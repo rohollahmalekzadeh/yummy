@@ -2,14 +2,12 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import {
-  MenuToggler,
-  HeaderVertical,
-  HeaderHorizontal,
-  Button,
-  ShoppingCart,
-  BookmarkCart,
-} from 'src/components'
+import MenuToggler from './menuToggler'
+import HeaderVertical from './headerVertical'
+import HeaderHorizontal from './headerHorizontal'
+import Button from 'src/components/ui/button'
+import ShoppingCart from 'src/components/shoppingCart/shoppingCart'
+import BookmarkCart from 'src/components/bookmarkCart/bookmarkCart'
 
 import {motion, useCycle} from 'framer-motion'
 import {
@@ -23,7 +21,6 @@ import {singOutUser} from 'src/lib/firebase'
 
 const Header = ({menuITems}) => {
   const [isOpen, toggleOpen] = useCycle(false, true)
-
   const {currentUser} = useUser()
 
   return (
@@ -40,7 +37,7 @@ const Header = ({menuITems}) => {
         animate={isOpen ? 'open' : 'closed'}
       >
         <motion.div
-          className="bg-white absolute -top-1 left-0 h-screen  w-52"
+          className="bg-white absolute -top-1 left-0 h-screen  w-40"
           variants={sidebarVariants}
         />
 
@@ -69,7 +66,7 @@ const Header = ({menuITems}) => {
       </motion.div>
 
       {/* Horizontal Navbar */}
-      <div className="hidden lg:inline-block mt-1">
+      <div className="hidden  lg:inline-block mt-1">
         <ul className="flex gap-2">
           <Link href="/">
             <a className="bg-orange-50 mr-2 hover:bg-orange-50">
@@ -93,7 +90,10 @@ const Header = ({menuITems}) => {
         <div>
           <ul className="flex items-center gap-x-2 lg:gap-2">
             {currentUser ? (
-              <Button onClick={singOutUser} className="w-24">
+              <Button
+                onClick={singOutUser}
+                className="text-sm w-14 md:text-base md:w-20"
+              >
                 SingOut
               </Button>
             ) : (
@@ -119,7 +119,10 @@ const Header = ({menuITems}) => {
                         transition: {duration: 0.2},
                       }}
                     >
-                      <Button buttonType="inverted" className="w-20 md:w-28">
+                      <Button
+                        buttonType="inverted"
+                        className="text-sm w-14 md:text-base md:w-20"
+                      >
                         Register
                       </Button>
                     </motion.a>
@@ -137,7 +140,9 @@ const Header = ({menuITems}) => {
                 >
                   <Link href="/login">
                     <motion.a>
-                      <Button className="w-20 md:w-28">Login</Button>
+                      <Button className="text-sm w-14 md:text-base md:w-20">
+                        Login
+                      </Button>
                     </motion.a>
                   </Link>
                 </motion.li>
@@ -146,9 +151,7 @@ const Header = ({menuITems}) => {
             <li>
               <ShoppingCart />
             </li>
-            <li>
-              <BookmarkCart />
-            </li>
+            <li>{/* <BookmarkCart /> */}</li>
           </ul>
         </div>
       </div>

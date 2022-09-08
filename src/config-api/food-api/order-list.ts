@@ -1,4 +1,4 @@
-import {normalizeDataForPoster} from 'src/utils/utils'
+import {normalizeDataForPoster} from 'src/utils/helpers/utils'
 import {CartItems} from 'types/data'
 import {
   FOOD_LIST,

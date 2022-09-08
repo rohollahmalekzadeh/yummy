@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import {motion} from 'framer-motion'
 import {navigationMobileItemsVariants} from '../framer/navbar-framer-motion'
-import {Button} from 'src/components'
+import Button from 'src/components/ui/button'
 
 type HeaderVerticalProps = {
   children: string
@@ -24,7 +24,7 @@ const HeaderVertical: FC<HeaderVerticalProps> = ({children}) => {
       }}
     >
       <Link href={`/${children}`}>
-        <Button buttonType="inverted" className="w-36">
+        <Button buttonType="inverted" className="w-24 text-sm">
           {children}
         </Button>
       </Link>

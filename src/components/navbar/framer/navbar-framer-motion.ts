@@ -21,19 +21,17 @@ export const sidebarVariants: Variants = {
 export const navbarVariants: Variants = {
   open: {
     opacity: 1,
-    y: 0,
+    translateY: 0,
     transition: {
-      duration: 0.5,
+      duration: 0.3,
       ease: 'easeOut',
-      delay: 0.3,
     },
   },
-  closed: {opacity: 0, y: -300},
+  closed: {opacity: 0, translateY: -300},
 }
 
 export const navigationMobileVariants: Variants = {
   open: {
-    opacity: 1,
     display: 'inline-block',
     transition: {
       staggerChildren: 0.2,
@@ -44,7 +42,6 @@ export const navigationMobileVariants: Variants = {
   },
   closed: {
     display: 'none',
-    opacity: 1,
     transition: {
       staggerChildren: 0.1,
       delay: 0.6,

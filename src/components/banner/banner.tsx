@@ -15,22 +15,20 @@ const Banner = () => {
       animate="show"
       exit="exit"
     >
-      <BannerLoader setMountImage={setMountImage} />
+      {/* <BannerLoader setMountImage={setMountImage} /> */}
 
-      {mountImage && (
-        <motion.div
-          className="p-10 h-[550px] md:h-[900px] lg:h-[1000px] md:p-20 flex justify-center  "
-          variants={mainItem}
-        >
-          <Image
-            src="/assets/banner.jpg"
-            height={1000}
-            width={1400}
-            priority={true}
-            alt="banner"
-          />
-        </motion.div>
-      )}
+      <motion.div
+        className="p-10 h-[550px] md:h-[900px] lg:h-[1000px] md:p-20 flex justify-center  "
+        // variants={mainItem}
+      >
+        <Image
+          src="/assets/banner.jpg"
+          height={1000}
+          width={1400}
+          priority={true}
+          alt="banner"
+        />
+      </motion.div>
     </motion.div>
   )
 }

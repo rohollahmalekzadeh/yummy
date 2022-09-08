@@ -1,5 +1,5 @@
 import React, {FC} from 'react'
-import {SingleStar} from 'src/components'
+import SingleStar from 'src/components/star/singleStar'
 
 type CommentsProps = {
   name: string

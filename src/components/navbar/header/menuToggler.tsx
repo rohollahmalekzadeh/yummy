@@ -1,5 +1,5 @@
 import React, {FC, MouseEventHandler} from 'react'
-import {Path} from '../../index'
+import Path from './path'
 
 type MenuTogglerProps = {toggle: MouseEventHandler<HTMLButtonElement>}
 const MenuToggler: FC<MenuTogglerProps> = ({toggle}) => {

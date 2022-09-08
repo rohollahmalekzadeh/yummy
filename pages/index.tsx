@@ -79,8 +79,8 @@ const Home = ({highProtein}: any) => {
             <OrderPoster
               key={item.label}
               {...item}
-              AddToCartComponent={<AddToCartButton item={item} />}
-              PriceComponent={<Price price={item.price} off={item.off} />}
+              addToCartComponent={<AddToCartButton item={item} />}
+              priceComponent={<Price price={item.price} off={item.off} />}
             />
           ))}
         </Row>

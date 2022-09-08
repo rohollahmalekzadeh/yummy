@@ -20,7 +20,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/components/formLayout/formLayout.js",
+    "src/components/ui/formLayout/formLayout.js",
     "src/components/banner/bannerLoader.js",
     "axios/axios.ts",
     "tailwind.config.js",

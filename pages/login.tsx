@@ -3,7 +3,10 @@ import {NextPage} from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import {SuccessMessage, FormLayout, Form, Button} from 'src/components'
+import SuccessMessage from 'src/components/successMessage/successMessage'
+import FormLayout from 'src/components/ui/formLayout'
+import Form from 'src/components/ui/form'
+import Button from 'src/components/ui/button'
 import InputAuthentication from 'src/components/inputAuthentication/inputAuthentication'
 
 import {
@@ -41,9 +44,11 @@ const Login: NextPage = () => {
         formFields.email,
         formFields.password,
       )
-    } catch (e: any) {
-      if (e?.code === 'auth/wrong-password') setErrorMsg('Password is wrong')
-      else if (e?.code === 'auth/user-not-found') setErrorMsg('User not found')
+    } catch (error: any) {
+      if (error?.code === 'auth/wrong-password')
+        setErrorMsg('Password is wrong')
+      else if (error?.code === 'auth/user-not-found')
+        setErrorMsg('User not found')
       else throw e
     }
   }

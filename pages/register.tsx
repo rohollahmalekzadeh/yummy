@@ -3,15 +3,19 @@ import {NextPage} from 'next'
 import Image from 'node_modules/next/image'
 import Link from 'node_modules/next/link'
 
-import {SuccessMessage, FormLayout, Form, Button} from 'src/components'
+import SuccessMessage from 'src/components/successMessage/successMessage'
+import FormLayout from 'src/components/ui/formLayout'
+import Form from 'src/components/ui/form'
+import Button from 'src/components/ui/button'
 import InputAuthentication from 'src/components/inputAuthentication/inputAuthentication'
-import useRegister from 'src/hooks/authentication/register/useRegister'
+
+import useRegister from 'src/utils/hooks/authentication/useRegister'
+import {defaultFormFields} from 'src/utils/hooks/authentication/register.utils'
+
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
 } from 'src/lib/firebase'
-
-import {defaultFormFields} from 'src/hooks/authentication/register/register.utils'
 
 const Register: NextPage = () => {
   const [formFields, setFormFields] = useState(defaultFormFields)
@@ -21,7 +25,8 @@ const Register: NextPage = () => {
   const [errorMsg, setErrMsg] = useState('')
 
   useEffect(() => {
-    setErrMsg('')
+    errorMsg.length > 0 && setErrMsg('')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formFields])
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
