@@ -32,8 +32,8 @@ export const MEAL_QUERY = 'mealType' as const
 export const MEAL_LIST = {
   BREAKFAST: 'breakfast',
   BRUNCH: 'brunch',
-  // LUNCH_DINNER : 'lunch/dinner',
-  // SNACK : 'snack',
+  // LUNCH_DINNER: 'lunch/dinner',
+  SNACK: 'snack',
 }
 
 export const FOOD_QUERY = 'q' as const
@@ -65,4 +65,13 @@ export enum FOOD_SINGLE_ITEM {
   PIZZA = 'pizza',
   JUICE = 'juice',
   SALAD = 'salad',
+}
+
+export const cuisineType = {
+  American: false,
+  Asian: false,
+  British: false,
+  Chinese: false,
+  French: false,
+  Italian: false,
 }
