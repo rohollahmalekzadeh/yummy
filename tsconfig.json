@@ -26,7 +26,8 @@
     "tailwind.config.js",
     "src/components/navbar/header/header.js",
     "pages/api/auth/[...nextauth].js",
-    "contexts/userProvider.js"
+    "contexts/userProvider.js",
+    "src/utils/hocs/authProvider/index.js"
   ],
   "exclude": ["node_modules"]
 }

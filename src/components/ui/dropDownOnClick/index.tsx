@@ -9,8 +9,7 @@ type DropdownOnClick = {
   className?: string
   children: ReactNode
 }
-const baseStyle =
-  'flex flex-col p-1 border-b-2 border-yellow-300 text-2xl cursor-pointer'
+const baseStyle = ' cursor-pointer'
 
 const DropdownOnClick: FC<DropdownOnClick> = ({
   IconOpen = FaCaretDown,

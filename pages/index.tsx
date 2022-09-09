@@ -43,7 +43,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
 }
 
 const Home = ({highProtein}: any) => {
-  console.log(highProtein)
   return (
     <div>
       <Head>
