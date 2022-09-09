@@ -7,7 +7,7 @@ import RowsContainer from 'src/components/ui/rowsContainer'
 import AddToCartButton from 'src/components/addToCartButton/addToCartButton'
 import Price from 'src/components/price/price'
 import StickyLayout from 'src/components/ui/stickyLayout'
-import DropdownOnClick from 'src/components/ui/dropDownOnClick'
+import Dropdowns from 'src/components/ui/dropdowns'
 
 import {getFoodData} from 'src/config-api/food-api/order-list'
 import {ORDER} from 'src/link'
@@ -76,7 +76,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 const Food = ({data, defaultObject}: any) => {
   const [filter, setFilter] = useState({...defaultObject, ...cuisineType})
-  console.log(filter)
   const {query} = useRouter()
 
   const title =
@@ -101,7 +100,6 @@ const Food = ({data, defaultObject}: any) => {
   //*This is a beginning idea
   //*I'm going to change it, add some variables from react query and make it clean.
   //TODO:Change DropdownOnClick to Dropdown
-
   return (
     <div className="flex justify-center items-start gap-14 relative">
       <div>
@@ -126,32 +124,29 @@ const Food = ({data, defaultObject}: any) => {
           Filter
         </h6>
 
-        {filterItems.map((item) => {
-          return (
-            <DropdownOnClick
-              title={Object.keys(item).join('')}
-              className="flex flex-col p-1 border-b-2 border-yellow-300 text-2xl"
-              key={Object.keys(item).join('')}
-            >
-              <div className="bg-white px-4 text-lg">
-                {Object.values(item)
-                  .flat()
-                  .map((item) => {
-                    return (
-                      <CheckboxInput
-                        label={item}
-                        value={item}
-                        name={item}
-                        onChange={handleCheck}
-                        checked={filter.item}
-                        key={item}
-                      />
-                    )
-                  })}
-              </div>
-            </DropdownOnClick>
-          )
-        })}
+        {filterItems.map((item) => (
+          <Dropdowns
+            onClickShow={true}
+            title={Object.keys(item).join('')}
+            className="flex flex-col p-1 border-b-2 border-yellow-300 text-2xl"
+            key={Object.keys(item).join('')}
+          >
+            <div className="bg-white px-4 text-lg">
+              {Object.values(item)
+                .flat()
+                .map((item) => (
+                  <CheckboxInput
+                    label={item}
+                    value={item}
+                    name={item}
+                    onChange={handleCheck}
+                    checked={filter.item}
+                    key={item}
+                  />
+                ))}
+            </div>
+          </Dropdowns>
+        ))}
       </StickyLayout>
     </div>
   )
