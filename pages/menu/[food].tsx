@@ -23,6 +23,7 @@ import {
 import CheckboxInput from 'src/components/ui/checkboxInput'
 
 import {CartItems} from 'types/data'
+import {useRouter} from 'next/router'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = ORDER.map((item) => {
@@ -57,6 +58,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       : foodType === 'q'
       ? FOOD_LIST
       : ''
+
   const defaultObject = {} as any
   Object.values(list).forEach((item) => (defaultObject[item] = false))
 
@@ -74,6 +76,22 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 const Food = ({data, defaultObject}: any) => {
   const [filter, setFilter] = useState({...defaultObject, ...cuisineType})
+  console.log(filter)
+  const {query} = useRouter()
+
+  const title =
+    query.food === 'diet'
+      ? 'Diet'
+      : query.food === 'mealType'
+      ? 'Meal'
+      : query.food === 'q'
+      ? 'Food'
+      : ''
+
+  const filterItems = [
+    {[title]: Object.keys(defaultObject)},
+    {'Cuisine type': Object.keys(cuisineType)},
+  ]
 
   const handleCheck = (e: ChangeEvent<HTMLInputElement>) => {
     const {checked, value} = e.target
@@ -107,41 +125,33 @@ const Food = ({data, defaultObject}: any) => {
         <h6 className="text-4xl border-b-2 pb-1 border-yellow-300 mb-2">
           Filter
         </h6>
-        <DropdownOnClick
-          title="Meal"
-          className="flex flex-col p-1 border-b-2 border-yellow-300 text-2xl"
-        >
-          <div className="bg-white px-4  text-lg">
-            {Object.keys(defaultObject).map((item) => (
-              <CheckboxInput
-                label={item}
-                value={item}
-                name={item}
-                onChange={handleCheck}
-                checked={filter.item}
-                key={item}
-              />
-            ))}
-          </div>
-        </DropdownOnClick>
 
-        <DropdownOnClick
-          title="Cuisine Type"
-          className="flex flex-col p-1 border-b-2 border-yellow-300 text-2xl"
-        >
-          <div className="bg-white px-4 text-lg">
-            {Object.keys(cuisineType).map((item) => (
-              <CheckboxInput
-                label={item}
-                value={item}
-                name={item}
-                onChange={handleCheck}
-                checked={filter.item}
-                key={item}
-              />
-            ))}
-          </div>
-        </DropdownOnClick>
+        {filterItems.map((item) => {
+          return (
+            <DropdownOnClick
+              title={Object.keys(item).join('')}
+              className="flex flex-col p-1 border-b-2 border-yellow-300 text-2xl"
+              key={Object.keys(item).join('')}
+            >
+              <div className="bg-white px-4 text-lg">
+                {Object.values(item)
+                  .flat()
+                  .map((item) => {
+                    return (
+                      <CheckboxInput
+                        label={item}
+                        value={item}
+                        name={item}
+                        onChange={handleCheck}
+                        checked={filter.item}
+                        key={item}
+                      />
+                    )
+                  })}
+              </div>
+            </DropdownOnClick>
+          )
+        })}
       </StickyLayout>
     </div>
   )
