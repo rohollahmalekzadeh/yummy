@@ -14,7 +14,7 @@ import TextArea from 'src/components/ui/textArea'
 import Form from '../ui/form'
 
 import {addComments} from 'src/lib/firebase'
-import {useUser} from 'src/contexts/userProvider'
+import {useUser} from 'src/contexts/userContext'
 
 const WriteComments = ({label}: {label: any}) => {
   const [comment, setComment] = useState('')

@@ -16,7 +16,7 @@ import {
   navigationMobileVariants,
 } from '../framer/navbar-framer-motion'
 
-import {useUser} from 'src/contexts/userProvider'
+import {useUser} from 'src/contexts/userContext'
 import {singOutUser} from 'src/lib/firebase'
 
 const Header = ({menuITems}) => {
